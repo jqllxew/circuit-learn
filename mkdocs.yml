@@ -59,3 +59,4 @@ nav:
     - TPS51123 系统供电控制器: tps51123.md
   - 待机与开机时序:
     - EC 待机架构: ec-standby.md
+    - 上电时序与开机流程: power-on-sequence.md
