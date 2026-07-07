@@ -1,0 +1,2220 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="主板电路分析与芯片手册整理">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>RTC 相关信号整理 - 电路学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rtc" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="电路学习笔记" class="md-header__button md-logo" aria-label="电路学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            电路学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RTC 相关信号整理
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换亮色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换亮色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="电路学习笔记" class="md-nav__button md-logo" aria-label="电路学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    电路学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rtc-signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTC 相关信号
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20v-power-rail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20V 供电公共点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    隔离保护电路
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    隔离保护电路
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bq24780s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BQ24780S 充电控制器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bq24727/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BQ24727 充电控制器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ISL88731A 充电控制器
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ISL88731A 充电控制器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../isl88731a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    芯片说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../isl88731a-reference-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型参考设计分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../isl88731a-timing-natural/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言时序说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PWM 供电电路
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PWM 供电电路
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tps51125/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TPS51125 系统供电控制器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tps51123/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TPS51123 系统供电控制器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    待机与开机时序
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    待机与开机时序
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ec-standby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EC 待机架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rtcrst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RTCRST
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#srtcrst" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SRTCRST
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rtc_x1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RTC_X1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rtc_x2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RTC_X2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rtcvcc_3p3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RTCVCC_3P3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        供电架构总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见故障排查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="rtc">RTC 相关信号整理<a class="headerlink" href="#rtc" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>引脚固定性</strong>: 对于同一颗南桥/PCH 型号，以上 5 个信号（RTCRST、SRTCRST、RTC_X1、RTC_X2、RTCVCC_3P3）的 Ball/Pin 位置由芯片 Datasheet 精确定义，是固定不变的。Layout 时直接按 datasheet 给出的 pin map 扇出即可，不同主板之间这部分接线完全一致。</p>
+</blockquote>
+<hr />
+<h2 id="rtcrst">RTCRST<a class="headerlink" href="#rtcrst" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>全称</strong>: RTC Reset</li>
+<li><strong>功能</strong>: RTC 电路复位信号，用于将 RTC 寄存器恢复为默认值</li>
+<li><strong>类型</strong>: 输入信号 (Input)</li>
+<li><strong>有效电平</strong>: 通常低电平有效</li>
+<li><strong>说明</strong>:</li>
+<li>当此信号被拉低时，RTC 内部逻辑（除 RTC 电池备份域外）被复位</li>
+<li>通常连接到板上的 RTC 复位跳线或按键，用于清除 CMOS/BIOS 设置</li>
+<li>在正常运行时由 RTC 电池 (VBAT) 域上拉保持高电平</li>
+<li>触发 RTCRST 等同于 "CLR_CMOS" 操作</li>
+</ul>
+<hr />
+<h2 id="srtcrst">SRTCRST<a class="headerlink" href="#srtcrst" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>全称</strong>: Secondary RTC Reset / Suspend RTC Reset</li>
+<li><strong>功能</strong>: 辅助 RTC 复位信号</li>
+<li><strong>类型</strong>: 输入信号 (Input)</li>
+<li><strong>有效电平</strong>: 通常低电平有效</li>
+<li><strong>说明</strong>:</li>
+<li>Intel PCH 系列中引入的辅助 RTC 复位</li>
+<li>与 RTCRST 配合使用，在深度休眠或异常状态下提供更完整的 RTC 复位路径</li>
+<li>部分平台中作为 Intel Management Engine (ME) 的复位触发源之一</li>
+<li>在 S5/G3 状态下仍有效，确保 RTC 彻底复位</li>
+</ul>
+<hr />
+<h2 id="rtc_x1">RTC_X1<a class="headerlink" href="#rtc_x1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>全称</strong>: RTC Crystal Input 1</li>
+<li><strong>功能</strong>: 32.768 kHz 晶振输入端</li>
+<li><strong>类型</strong>: 模拟信号 (Analog)</li>
+<li><strong>说明</strong>:</li>
+<li>连接外部 32.768 kHz 石英晶振的一个引脚</li>
+<li>与 RTC_X2 共同构成皮尔斯振荡器 (Pierce Oscillator)</li>
+<li>需要外接匹配电容（通常 10~18pF）到地</li>
+<li>走线应尽量短，包地处理，远离高速数字信号</li>
+</ul>
+<hr />
+<h2 id="rtc_x2">RTC_X2<a class="headerlink" href="#rtc_x2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>全称</strong>: RTC Crystal Input 2</li>
+<li><strong>功能</strong>: 32.768 kHz 晶振输出端</li>
+<li><strong>类型</strong>: 模拟信号 (Analog)</li>
+<li><strong>说明</strong>:</li>
+<li>连接外部 32.768 kHz 石英晶振的另一个引脚</li>
+<li>与 RTC_X1 配对使用</li>
+<li>同样需要匹配电容</li>
+<li>晶振频率精度直接影响 RTC 走时准确性（典型偏差 ±20ppm）</li>
+</ul>
+<hr />
+<h2 id="rtcvcc_3p3">RTCVCC_3P3<a class="headerlink" href="#rtcvcc_3p3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>全称</strong>: RTC Voltage Supply 3.3V</li>
+<li><strong>功能</strong>: RTC 核心电路 3.3V 供电</li>
+<li><strong>类型</strong>: 电源 (Power)</li>
+<li><strong>电压</strong>: 3.3V</li>
+<li><strong>说明</strong>:</li>
+<li>系统 S0 状态下为 RTC 数字逻辑部分供电</li>
+<li>当系统进入 G3 (机械断电) 状态时，RTC 由 VBAT（纽扣电池）接管供电</li>
+<li>通常由主板 3.3V 待机电源轨 (3V3_SB/3V3_AUX) 产生</li>
+<li>供电切换逻辑确保在电源状态切换时 RTC 不掉电</li>
+</ul>
+<hr />
+<h2 id="_1">供电架构总结<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>S0 状态:     RTCVCC_3P3 (3.3V) -&gt; RTC 数字逻辑
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>G3/S5 状态:  VBAT (3.0V 纽扣电池) -&gt; RTC 备份域 (仅保持时间和 CMOS 数据)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>复位路径:    RTCRST / SRTCRST -&gt; RTC 寄存器复位 (不影响备份域数据)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>             CLR_CMOS 跳线 -&gt; 同时清除 RTC 寄存器和 CMOS 校验和
+</code></pre></div>
+<h2 id="_2">常见故障排查<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>可能原因</th>
+<th>检查点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统时间不准</td>
+<td>晶振偏差大</td>
+<td>RTC_X1/X2 匹配电容、晶振本身</td>
+</tr>
+<tr>
+<td>CMOS 校验和错误</td>
+<td>RTC 掉电</td>
+<td>VBAT 电压、RTCVCC_3P3 切换电路</td>
+</tr>
+<tr>
+<td>无法保存 BIOS 设置</td>
+<td>RTCRST 常低</td>
+<td>RTCRST 上拉电阻、跳线帽</td>
+</tr>
+<tr>
+<td>开机卡 RTC 初始化</td>
+<td>晶振不起振</td>
+<td>晶振焊接、RTC_X1/X2 短路/开路</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="20v">20V 供电公共点<a class="headerlink" href="#20v" title="Permanent link">&para;</a></h1>
+<h2 id="_3">名称<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>20V 公共供电点</strong> / <strong>20V 供电公共点</strong></li>
+<li>也称: <strong>Vin 公共点</strong>、<strong>上管 Drain 公共点</strong></li>
+</ul>
+<h2 id="_4">位置<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>多路 Buck 变换器上管 MOSFET 的 Drain 极汇合点，统一接至 20V 公共供电轨。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>20V 公共供电轨 ──┬── 上管(MOSFET) Drain ──┬── 电感 → 输出 → [Buck 1: VCore]
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                 │                         │
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                 ├── 上管(MOSFET) Drain ──┼── 电感 → 输出 → [Buck 2: VCCSA]
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                 │                         │
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>                 ├── 上管(MOSFET) Drain ──┴── 电感 → 输出 → [Buck 3: VCCIO]
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>                 │
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>                 └── ... (其他 Buck 路)
+</code></pre></div>
+<blockquote>
+<p>主板上几乎所有 Buck 电路的上管 Drain 都挂在这条 20V 公共轨上，它不是某个单路 Buck 的专属节点，而是整板统一的功率供电母线。</p>
+</blockquote>
+<h2 id="_5">特征<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>电压</strong></td>
+<td>典型 19V~20V DC（适配器输入或电池升压后），笔记本主板通常 19V</td>
+</tr>
+<tr>
+<td><strong>性质</strong></td>
+<td>直流供电轨，不随 PWM 开关动作翻转</td>
+</tr>
+<tr>
+<td><strong>电流</strong></td>
+<td>各路 Buck 上管导通电流的总和，峰值可达数十安培</td>
+</tr>
+<tr>
+<td><strong>纹波</strong></td>
+<td>各路上管开关时从公共点抽取脉冲电流，会在 20V 轨上产生纹波，需靠前级电容滤波</td>
+</tr>
+</tbody>
+</table>
+<h2 id="layout">Layout 要点<a class="headerlink" href="#layout" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>要点</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>铜皮宽度</strong></td>
+<td>20V 轨承载整板总功率，走线 / 铜皮需足够宽，或使用大面积内层 Plane 供电</td>
+</tr>
+<tr>
+<td><strong>滤波电容</strong></td>
+<td>每路上管 Drain 就近放置 MLCC 滤波电容（典型 10µF~22µF × N），为开关瞬间提供低阻抗电流回路</td>
+</tr>
+<tr>
+<td><strong>电流路径</strong></td>
+<td>确保 20V → 上管 Drain → 上管 Source(SW) → 电感 的大电流回路面积尽量小</td>
+</tr>
+<tr>
+<td><strong>远离敏感信号</strong></td>
+<td>虽为直流，但上管开关时 Drain 节点仍有高频 di/dt 脉冲电流，滤波电容的布局决定噪声耦合强度</td>
+</tr>
+<tr>
+<td><strong>过孔数量</strong></td>
+<td>若 20V 走线换层，需足够过孔载流，避免过孔发热烧断</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">常见故障<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>可能原因</th>
+<th>检查点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20V 公共点对地短路</td>
+<td>某路上管击穿（D-S 短路）</td>
+<td>逐路断开电感/上管，分段排查短路</td>
+</tr>
+<tr>
+<td>20V 输入电压偏低</td>
+<td>适配器功率不足 / 前级供电异常</td>
+<td>断开后级负载测 20V 是否恢复</td>
+</tr>
+<tr>
+<td>多路输出同时异常</td>
+<td>20V 公共轨纹波过大</td>
+<td>示波器 AC 耦合测 20V 轨纹波，检查公共点滤波电容</td>
+</tr>
+<tr>
+<td>上管批量烧毁</td>
+<td>20V 轨过压冲击</td>
+<td>检查适配器输出电压、TVS 保护管是否失效</td>
+</tr>
+<tr>
+<td>局部铜皮烧断</td>
+<td>20V 铜皮载流不够 / 过孔不足</td>
+<td>红外热像看热点，计算铜皮截面积是否满足电流需求</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="bq24780s">BQ24780S 充电控制器<a class="headerlink" href="#bq24780s" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>数据来源: TI bq24780S 数据手册 ZHCSG48C (2015.04 – 2017.03修订)
+SMBus 地址: 0x12H (7-bit: 0b00010010)
+ManufacturerID: 0x0040H | DeviceID: 0x0030H
+封装: WQFN-28 (RUY), 4.00 × 4.00 mm²</p>
+</blockquote>
+<hr />
+<h2 id="_7">概述<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>bq24780S 是一款高效同步降压电池充电控制器，支持<strong>混合动力升压模式</strong> (Hybrid Power Boost Mode，原称 Turbo Boost Mode)。适用于 1~4 节串联锂电池充电，通过 SMBus 与 EC/Host 通信，具有高精度电流/功率监视和 CPU PROCHOT 功能。</p>
+<h3 id="_8">核心特性<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>输入电压</strong></td>
+<td>4.5V ~ 24V (绝对最大值 30V)</td>
+</tr>
+<tr>
+<td><strong>充电电压</strong></td>
+<td>1.024V ~ 19.2V (16mV 步长, ±0.4% 精度)</td>
+</tr>
+<tr>
+<td><strong>充电电流</strong></td>
+<td>最大 8.128A (64mA 步长, ±2% 精度)</td>
+</tr>
+<tr>
+<td><strong>放电电流</strong></td>
+<td>最大 8.192A (512mA 步长, ±2% 精度)</td>
+</tr>
+<tr>
+<td><strong>输入电流</strong></td>
+<td>最大 8.064A (128mA 步长, ±2% 精度)</td>
+</tr>
+<tr>
+<td><strong>支持电池</strong></td>
+<td>1~4 节 Li-Ion/Li-Polymer/LiFePO4/PbA/NiCd/NiMH</td>
+</tr>
+<tr>
+<td><strong>开关频率</strong></td>
+<td>600kHz / 800kHz (默认) / 1MHz</td>
+</tr>
+<tr>
+<td><strong>控制接口</strong></td>
+<td>SMBus (slave only)</td>
+</tr>
+<tr>
+<td><strong>待机电流</strong></td>
+<td>0.65mA (适配器待机, 符合 Energy Star)</td>
+</tr>
+<tr>
+<td><strong>充电拓扑</strong></td>
+<td>同步降压 (Synchronous Buck)</td>
+</tr>
+<tr>
+<td><strong>温度范围</strong></td>
+<td>-40°C ~ +85°C</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="wqfn-28-top-view">引脚排列 (WQFN-28, Top View)<a class="headerlink" href="#wqfn-28-top-view" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>                       VCC  PHASE  HIDRV  BTST  REGN  LODRV  GND
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                       28    27     26     25    24    23     22
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>     ACN          1                                                21    ILIM
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>     ACP          2                                                20    SRP
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>     CMSRC        3                                                19    SRN
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>     ACDRV        4                     Thermal                    18    BATDRV
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>     ACOK         5                      Pad                       17    BATSRC
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>     ACDET        6                                                16    TB_STAT
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>     IADP         7                                                15    BATPRES
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>                       8      9      10     11    12    13     14
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>                      IDCHG  PMON  PROCHOT  SDA  SCL  CMPIN  CMPOUT
+</code></pre></div>
+<hr />
+<h2 id="_9">引脚功能详解<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="_10">电源与系统侧<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>名称</th>
+<th>类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>28</td>
+<td><strong>VCC</strong></td>
+<td>电源输入</td>
+<td>IC 供电输入，来自适配器或电池。通过二极管 OR 连接。建议用 10Ω + 1µF 低通滤波</td>
+</tr>
+<tr>
+<td>1</td>
+<td><strong>ACN</strong></td>
+<td>模拟输入</td>
+<td>输入电流检测电阻负端，对地接 0.01µF 共模滤波电容</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>ACP</strong></td>
+<td>模拟输入</td>
+<td>输入电流检测电阻正端，对地接 0.1µF 共模滤波电容。ACN-ACP 之间接 0.1µF 差模滤波</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>CMSRC</strong></td>
+<td>输入</td>
+<td>ACDRV 电荷泵源端输入，接 ACFET(Q1) 和 RBFET(Q2) 的共源极。串 4kΩ 电阻限流</td>
+</tr>
+<tr>
+<td>17</td>
+<td><strong>BATSRC</strong></td>
+<td>输入</td>
+<td>BATFET 源极连接。BATDRV 电压 = BATSRC + 6V</td>
+</tr>
+<tr>
+<td>22</td>
+<td><strong>GND</strong></td>
+<td>地</td>
+<td>IC 地。Layout 时接模拟地平面，仅通过 IC 底部 PowerPAD 与功率地星形连接</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_11">栅极驱动<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>名称</th>
+<th>类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td><strong>ACDRV</strong></td>
+<td>输出</td>
+<td>ACFET/RBFET 电荷泵驱动输出。ACOK 有效时 = CMSRC + 6V。串 4kΩ 到栅极</td>
+</tr>
+<tr>
+<td>18</td>
+<td><strong>BATDRV</strong></td>
+<td>输出</td>
+<td>BATFET 电荷泵驱动输出。导通时 = BATSRC + 6V，关断时短路到 BATSRC。串 4kΩ 到栅极</td>
+</tr>
+<tr>
+<td>26</td>
+<td><strong>HIDRV</strong></td>
+<td>输出</td>
+<td>上管 (High-side) N-MOSFET 栅极驱动</td>
+</tr>
+<tr>
+<td>27</td>
+<td><strong>PHASE</strong></td>
+<td>输入</td>
+<td>上管驱动源极，接上管 N-MOSFET 源极 (即 SW 节点)</td>
+</tr>
+<tr>
+<td>23</td>
+<td><strong>LODRV</strong></td>
+<td>输出</td>
+<td>下管 (Low-side) N-MOSFET 栅极驱动</td>
+</tr>
+<tr>
+<td>25</td>
+<td><strong>BTST</strong></td>
+<td>电源</td>
+<td>上管驱动自举电源，接 47nF 电容到 PHASE。REGN 到 BTST 的二极管已集成在 IC 内</td>
+</tr>
+<tr>
+<td>24</td>
+<td><strong>REGN</strong></td>
+<td>输出</td>
+<td>6V LDO 输出 (由 VCC 产生)。接 ≥ 2.2µF 0603 陶瓷电容到 GND。ACDET &gt; 0.6V 且 VCC &gt; UVLO 时有效</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">充电电流检测<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>名称</th>
+<th>类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20</td>
+<td><strong>SRP</strong></td>
+<td>模拟输入</td>
+<td>充电电流检测电阻正端。SRP-SRN 之间接 0.1µF 差模滤波</td>
+</tr>
+<tr>
+<td>19</td>
+<td><strong>SRN</strong></td>
+<td>模拟输入</td>
+<td>充电电流检测电阻负端 (兼电池电压检测)。对地接 0.1µF 共模滤波</td>
+</tr>
+<tr>
+<td>21</td>
+<td><strong>ILIM</strong></td>
+<td>模拟输入</td>
+<td>充电/放电电流实时限制。V_ILIM = 20×(VSRP-VSRN) 充电, = 5×(VSRN-VSRP) 放电。用电阻分压器从 3.3V 设定。最小值 120mV 使能</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_13">适配器检测<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>名称</th>
+<th>类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td><strong>ACDET</strong></td>
+<td>模拟输入</td>
+<td>适配器检测输入。用电阻分压器设定阈值。&gt; 0.6V 开启偏置电路，&gt; 2.4V 且 VCC 正常则 ACOK 变高</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>ACOK</strong></td>
+<td>开漏输出</td>
+<td>适配器存在指示 (高有效)。外接 10kΩ 上拉电阻。ACDET &gt; 2.4V、VCC 在 UVLO 和 ACOVP 之间、VCC &gt; BAT 时变高</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_14">监视输出<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>名称</th>
+<th>类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td><strong>IADP</strong></td>
+<td>模拟输出</td>
+<td>适配器电流缓冲输出。V = 20x 或 40x × V(ACP-ACN)。接 ≤100pF 退耦电容。不用可悬空</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>IDCHG</strong></td>
+<td>模拟输出</td>
+<td>电池放电电流缓冲输出。V = 8x 或 16x × V(SRN-SRP)。接 ≤100pF 退耦电容。不用可悬空</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>PMON</strong></td>
+<td>模拟输出</td>
+<td>系统总功率监视。输出电流 ∝ (适配器功率 + 电池功率)。外接电阻转电压。接 ≤100pF 退耦电容</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_15">逻辑与控制<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>名称</th>
+<th>类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td><strong>SDA</strong></td>
+<td>I/O 开漏</td>
+<td>SMBus 数据线。接 10kΩ 上拉电阻。VCC &gt; UVLO 后通信开始</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>SCL</strong></td>
+<td>输入</td>
+<td>SMBus 时钟线。接 10kΩ 上拉电阻</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>PROCHOT</strong></td>
+<td>开漏输出</td>
+<td>处理器热量指示 (低有效)。监视适配器电流/放电电流/系统电压等事件，触发后最少 10ms 脉冲</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>CMPIN</strong></td>
+<td>模拟输入</td>
+<td>独立比较器输入。基准/极性/去抖时间由 SMBus 设定。不用时接 GND</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>CMPOUT</strong></td>
+<td>开漏输出</td>
+<td>独立比较器输出。接 10kΩ 上拉。不用时悬空</td>
+</tr>
+<tr>
+<td>15</td>
+<td><strong>BATPRES</strong></td>
+<td>输入</td>
+<td>电池存在指示 (低有效)。低=电池存在，高=电池不在。变高时退出 LEARN，100µs 内开启 ACFET/RBFET</td>
+</tr>
+<tr>
+<td>16</td>
+<td><strong>TB_STAT</strong></td>
+<td>开漏输出</td>
+<td>升压模式指示 (低有效)。IC 处于混合动力升压模式时拉低。接 10kΩ 上拉</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_16">内部框图要点<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>VCC ──→ UVLO ──→ REGN LDO (6V)
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ACDET ──→ 0.6V Wakeup / 2.4V ACOK 比较器
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>ACP/ACN ──→ 20x/40x IADP 缓冲器 ──→ IADP 引脚
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>SRP/SRN ──→ 16x IDCHG 缓冲器 ──→ IDCHG 引脚
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>ACP/ACN + SRP/SRN ──→ PMON 功率计算 ──→ PMON 引脚
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>SDA/SCL ──→ SMBus 接口 ──→ 寄存器组 (ChargeOption/Current/Voltage)
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>PWM 控制 ──→ HIDRV/LODRV 栅极驱动
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>电荷泵 ×2 ──→ ACDRV (CMSRC+6V) / BATDRV (BATSRC+6V)
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>保护: ACOVP(26V) / ACOC / BATOVP(104%) / CHGOCP / TSHUT(155°C) / MOSFET短路
+</code></pre></div>
+<hr />
+<h2 id="_17">关键电气参数<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>条件</th>
+<th>最小值</th>
+<th>典型值</th>
+<th>最大值</th>
+<th>单位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VCC 工作电压</td>
+<td>-</td>
+<td>4.5</td>
+<td>-</td>
+<td>24</td>
+<td>V</td>
+</tr>
+<tr>
+<td>VCC UVLO 上升阈值</td>
+<td>VCC 上升</td>
+<td>2.4</td>
+<td>2.6</td>
+<td>2.8</td>
+<td>V</td>
+</tr>
+<tr>
+<td>ACOK 上升阈值</td>
+<td>ACDET 上升</td>
+<td>2.375</td>
+<td>2.4</td>
+<td>2.425</td>
+<td>V</td>
+</tr>
+<tr>
+<td>ACOVP 阈值</td>
+<td>VCC 上升</td>
+<td>24</td>
+<td>26</td>
+<td>28</td>
+<td>V</td>
+</tr>
+<tr>
+<td>REGN 输出</td>
+<td>VCC &gt; UVLO</td>
+<td>5.7</td>
+<td>6.0</td>
+<td>6.3</td>
+<td>V</td>
+</tr>
+<tr>
+<td>充电电压精度</td>
+<td>-10~85°C</td>
+<td>-0.4%</td>
+<td>-</td>
+<td>+0.4%</td>
+<td>-</td>
+</tr>
+<tr>
+<td>充电电流精度</td>
+<td>4A 档</td>
+<td>-2%</td>
+<td>-</td>
+<td>+2%</td>
+<td>-</td>
+</tr>
+<tr>
+<td>输入电流精度</td>
+<td>4A 档</td>
+<td>-2%</td>
+<td>-</td>
+<td>+2%</td>
+<td>-</td>
+</tr>
+<tr>
+<td>放电电流精度</td>
+<td>8A 档</td>
+<td>-2%</td>
+<td>-</td>
+<td>+2%</td>
+<td>-</td>
+</tr>
+<tr>
+<td>IADP 增益</td>
+<td>REG0x12[4]=0</td>
+<td>-</td>
+<td>20</td>
+<td>-</td>
+<td>V/V</td>
+</tr>
+<tr>
+<td>IDCHG 增益</td>
+<td>REG0x12[3]=1</td>
+<td>-</td>
+<td>16</td>
+<td>-</td>
+<td>V/V</td>
+</tr>
+<tr>
+<td>开关频率</td>
+<td>REG0x12[9:8]=01 (默认)</td>
+<td>680</td>
+<td>800</td>
+<td>920</td>
+<td>kHz</td>
+</tr>
+<tr>
+<td>热关断</td>
+<td>上升</td>
+<td>-</td>
+<td>155</td>
+<td>-</td>
+<td>°C</td>
+</tr>
+<tr>
+<td>热关断回滞</td>
+<td>下降</td>
+<td>-</td>
+<td>20</td>
+<td>-</td>
+<td>°C</td>
+</tr>
+<tr>
+<td>适配器待机电流</td>
+<td>充电禁止</td>
+<td>0.65</td>
+<td>0.8</td>
+<td>-</td>
+<td>mA</td>
+</tr>
+<tr>
+<td>电池模式电流</td>
+<td>Low Power Mode</td>
+<td>-</td>
+<td>5</td>
+<td>-</td>
+<td>µA</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="smbus">SMBus 寄存器一览<a class="headerlink" href="#smbus" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th>寄存器名</th>
+<th>读写</th>
+<th>说明</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x12H</td>
+<td>ChargeOption0()</td>
+<td>R/W</td>
+<td>充电选项 0 (低功耗/看门狗/频率/LEARN/增益/禁充)</td>
+<td>0xE108H</td>
+</tr>
+<tr>
+<td>0x14H</td>
+<td>ChargeCurrent()</td>
+<td>R/W</td>
+<td>充电电流设定 (7-bit)</td>
+<td>0x0000H</td>
+</tr>
+<tr>
+<td>0x15H</td>
+<td>ChargeVoltage()</td>
+<td>R/W</td>
+<td>充电电压设定 (11-bit)</td>
+<td>0x0000H</td>
+</tr>
+<tr>
+<td>0x39H</td>
+<td>DischargeCurrent()</td>
+<td>R/W</td>
+<td>放电电流限制 (6-bit)</td>
+<td>0x1800H (6144mA)</td>
+</tr>
+<tr>
+<td>0x3FH</td>
+<td>InputCurrent()</td>
+<td>R/W</td>
+<td>输入电流限制 (6-bit)</td>
+<td>0x1000H (4096mA)</td>
+</tr>
+<tr>
+<td>0x37H</td>
+<td>ChargeOption3()</td>
+<td>R/W</td>
+<td>充电选项 3 (Boost使能/ACOC等)</td>
+<td>0x1A40H</td>
+</tr>
+<tr>
+<td>0x38H</td>
+<td>ChargeOption2()</td>
+<td>R/W</td>
+<td>充电选项 2</td>
+<td>0x0384H</td>
+</tr>
+<tr>
+<td>0x3BH</td>
+<td>ChargeOption1()</td>
+<td>R/W</td>
+<td>充电选项 1 (电池耗尽/PMON/比较器)</td>
+<td>0xC210H</td>
+</tr>
+<tr>
+<td>0x3CH</td>
+<td>ProchotOption0()</td>
+<td>R/W</td>
+<td>PROCHOT 选项 0 (ICRIT/INOM阈值等)</td>
+<td>0x4A54H</td>
+</tr>
+<tr>
+<td>0x3DH</td>
+<td>ProchotOption1()</td>
+<td>R/W</td>
+<td>PROCHOT 选项 1 (IDCHG阈值等)</td>
+<td>0x8120H</td>
+</tr>
+<tr>
+<td>0x3AH</td>
+<td>ProchotStatus()</td>
+<td>R</td>
+<td>PROCHOT 触发状态</td>
+<td>0x0000H</td>
+</tr>
+<tr>
+<td>0xFEH</td>
+<td>ManufacturerID()</td>
+<td>R</td>
+<td>制造商 ID</td>
+<td>0x0040H</td>
+</tr>
+<tr>
+<td>0xFFH</td>
+<td>DeviceID()</td>
+<td>R</td>
+<td>器件 ID</td>
+<td>0x0030H</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="chargeoption0-0x12h">ChargeOption0() (0x12H) 位详解<a class="headerlink" href="#chargeoption0-0x12h" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>位</th>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[15]</td>
+<td>EN_LWPWR</td>
+<td>电池模式下低功耗使能 (默认 1: 最低静态电流)</td>
+</tr>
+<tr>
+<td>[14:13]</td>
+<td>WDTMR_ADJ</td>
+<td>看门狗定时器: 00=禁, 01=5s, 10=88s, 11=175s (默认)</td>
+</tr>
+<tr>
+<td>[9:8]</td>
+<td>PWM_FREQ</td>
+<td>开关频率: 00=600k, 01=800k (默认), 10=1MHz</td>
+</tr>
+<tr>
+<td>[5]</td>
+<td>EN_LEARN</td>
+<td>电池 LEARN 模式使能</td>
+</tr>
+<tr>
+<td>[4]</td>
+<td>IADP_GAIN</td>
+<td>IADP 增益: 0=20x (默认), 1=40x</td>
+</tr>
+<tr>
+<td>[3]</td>
+<td>IDCHG_GAIN</td>
+<td>IDCHG 增益: 0=8x, 1=16x (默认)</td>
+</tr>
+<tr>
+<td>[0]</td>
+<td>CHRG_INHIBIT</td>
+<td>充电禁止: 0=使能 (默认), 1=禁止</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="chargeoption1-0x3bh">ChargeOption1() (0x3BH) 位详解<a class="headerlink" href="#chargeoption1-0x3bh" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>位</th>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[15:14]</td>
+<td>BAT_DEPL_VTH</td>
+<td>电池耗尽阈值: 00=59%, 01=63%, 10=67%, 11=71% 充电电压 (默认)</td>
+</tr>
+<tr>
+<td>[13:12]</td>
+<td>RSNS_RATIO</td>
+<td>输入/充电检测电阻比: 00=1:1(默认), 01=2:1, 10=1:2</td>
+</tr>
+<tr>
+<td>[11]</td>
+<td>EN_IDCHG</td>
+<td>放电电流输出使能</td>
+</tr>
+<tr>
+<td>[10]</td>
+<td>EN_PMON</td>
+<td>功率监视输出使能</td>
+</tr>
+<tr>
+<td>[9]</td>
+<td>PMON_RATIO</td>
+<td>PMON 增益: 0=0.25µA/W, 1=1µA/W (默认, 10mΩ)</td>
+</tr>
+<tr>
+<td>[7]</td>
+<td>CMP_REF</td>
+<td>独立比较器基准: 0=2.3V(默认), 1=1.2V</td>
+</tr>
+<tr>
+<td>[6]</td>
+<td>CMP_POL</td>
+<td>比较器极性: 0=CMPIN&gt;阈值时CMPOUT=LOW(默认)</td>
+</tr>
+<tr>
+<td>[5:4]</td>
+<td>CMP_DEG</td>
+<td>比较器去抖: 00=禁, 01=1µs(默认), 10=2ms, 11=5s</td>
+</tr>
+<tr>
+<td>[3]</td>
+<td>EN_FET_LATCHOFF</td>
+<td>比较器触发时锁存关断 ACFET/RBFET</td>
+</tr>
+<tr>
+<td>[1]</td>
+<td>EN_SHIP_DCHG</td>
+<td>SRN 放电 5mA/140ms (用于出货模式)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="chargeoption3-0x37h">ChargeOption3() (0x37H) 位详解<a class="headerlink" href="#chargeoption3-0x37h" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>位</th>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[15]</td>
+<td>EN_IDCHG_REG</td>
+<td>放电电流调节使能</td>
+</tr>
+<tr>
+<td>[12]</td>
+<td>ACOK_DEG</td>
+<td>ACOK 去抖: 0=150ms, 1=1.3s (默认)</td>
+</tr>
+<tr>
+<td>[11]</td>
+<td>ACOK_STAT</td>
+<td>适配器存在状态 (只读)</td>
+</tr>
+<tr>
+<td>[10]</td>
+<td>EN_ACOC</td>
+<td>ACOC 保护使能</td>
+</tr>
+<tr>
+<td>[9]</td>
+<td>ACOC_VTH</td>
+<td>ACOC 阈值: 0=125% ICRIT, 1=200% ICRIT (默认)</td>
+</tr>
+<tr>
+<td>[7]</td>
+<td>IFAULT_HI</td>
+<td>上管 VDS 短路检测: 0=禁, 1=750mV</td>
+</tr>
+<tr>
+<td>[6]</td>
+<td>IFAULT_LO</td>
+<td>下管 VDS 短路检测: 0=禁, 1=250mV (默认)</td>
+</tr>
+<tr>
+<td>[5]</td>
+<td>FDPM_VTH</td>
+<td>快速 DPM 阈值: 0=107%(默认), 1=115%</td>
+</tr>
+<tr>
+<td>[4:3]</td>
+<td>FDPM_DEG</td>
+<td>快速 DPM 去抖: 00=150µs(默认), 01=250µs, 1X=50µs</td>
+</tr>
+<tr>
+<td>[2]</td>
+<td>EN_BOOST</td>
+<td>混合动力升压模式使能</td>
+</tr>
+<tr>
+<td>[1]</td>
+<td>BOOST_STAT</td>
+<td>升压模式状态 (只读)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_18">工作模式<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<h3 id="1-buck">1. 电池充电模式 (Buck)<a class="headerlink" href="#1-buck" title="Permanent link">&para;</a></h3>
+<ul>
+<li>恒流 (CC) → 恒压 (CV) 标准充电曲线</li>
+<li>使能条件: ACOK 有效、ILIM &gt; 120mV、寄存器有效值、ACFET/RBFET 导通、无 BATOVP、无 TSHUT</li>
+<li>内置软启动: 128mA 起步, 64mA/400µs 步进</li>
+</ul>
+<h3 id="2-hybrid-power-boost">2. 混合动力升压模式 (Hybrid Power Boost)<a class="headerlink" href="#2-hybrid-power-boost" title="Permanent link">&para;</a></h3>
+<ul>
+<li>系统功率需求 &gt; 适配器能力时，电池放电补充</li>
+<li>进入升压模式瞬态响应: 150µs</li>
+<li>适配器电流被限制在 InputCurrent() 设定值</li>
+<li>REG0x37[2] 使能, TB_STAT 引脚指示状态</li>
+<li>输入电流需 &gt; 1536mA (10mΩ 检测电阻) 才能支持</li>
+</ul>
+<h3 id="3-learn">3. 电池 LEARN 模式<a class="headerlink" href="#3-learn" title="Permanent link">&para;</a></h3>
+<ul>
+<li>REG0x12[5] 使能，ACFET/RBFET 关闭，BATFET 开启</li>
+<li>电池放电至耗尽阈值后自动退出</li>
+<li>用于电池电量计校准</li>
+</ul>
+<hr />
+<h2 id="_19">系统电源选择逻辑<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>适配器插入 ──→ ACDET &gt; 2.4V ──→ ACOK 变高 ──→ ACFET/RBFET 导通 ──→ 系统由适配器供电
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>电池模式   ──→ ACOK 低 ──→ BATFET 导通 ──→ 系统由电池供电
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>LEARN 模式 ──→ ACFET/RBFET 关断 + BATFET 导通 ──→ 电池放电
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>ACFET 快速导通: 100µs (BATPRES 变高时)
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>ACOK 上升去抖: 首次 150ms, 后续 1.3s
+</code></pre></div>
+<p><strong>ACFET/RBFET 关断条件:</strong>
+- ACOK 低
+- LEARN 模式下电池电压 &gt; 耗尽阈值
+- ACOVP (VCC &gt; 26V)
+- 7 次导通失败锁存 (90s 内)</p>
+<p><strong>BATFET 导通条件:</strong>
+- VCC &gt; UVLO
+- ACN &lt; SRN + 200mV
+- ACFET/RBFET 关断</p>
+<hr />
+<h2 id="_20">保护功能汇总<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>保护类型</th>
+<th>阈值</th>
+<th>响应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ACOVP</strong> (适配器过压)</td>
+<td>VCC &gt; 26V</td>
+<td>ACOK 拉低, ACFET/RBFET 关断, BATFET 导通</td>
+</tr>
+<tr>
+<td><strong>ACOC</strong> (输入过流)</td>
+<td>1.25x 或 2x ICRIT</td>
+<td>12ms 去抖后 ACFET/RBFET 锁存关断</td>
+</tr>
+<tr>
+<td><strong>BATOVP</strong> (电池过压)</td>
+<td>SRN &gt; 104% 充电电压</td>
+<td>PWM 停止, SRP 6mA 下拉放电, 超30ms 彻底禁充</td>
+</tr>
+<tr>
+<td><strong>CHGOCP</strong> (充电过流)</td>
+<td>60/90/120mV (SRP-SRN)</td>
+<td>逐周期限流</td>
+</tr>
+<tr>
+<td><strong>BATLOWV</strong> (电池低压)</td>
+<td>SRN &lt; 2.5V</td>
+<td>充电电流限制 0.5A (10mΩ), LSFET 仅刷新 BTST</td>
+</tr>
+<tr>
+<td><strong>TSHUT</strong> (热关断)</td>
+<td>Tj &gt; 155°C</td>
+<td>转换器关断, REGN 限流 14mA, 降至 135°C 恢复</td>
+</tr>
+<tr>
+<td><strong>MOSFET 短路</strong></td>
+<td>HS: 750mV, LS: 250mV Vds</td>
+<td>7 次后锁存关断</td>
+</tr>
+<tr>
+<td><strong>看门狗</strong></td>
+<td>175s 未收到 ChargeVoltage/ChargeCurrent 写</td>
+<td>转换器暂停</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="prochot">PROCHOT 触发事件<a class="headerlink" href="#prochot" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>说明</th>
+<th>寄存器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ICRIT</strong></td>
+<td>适配器峰值电流 (默认 150% 输入电流限制)</td>
+<td>REG0x3C[15:11]</td>
+</tr>
+<tr>
+<td><strong>INOM</strong></td>
+<td>适配器平均电流 (默认 110% 输入电流限制)</td>
+<td>REG0x3C[10:8]</td>
+</tr>
+<tr>
+<td><strong>IDCHG</strong></td>
+<td>电池放电电流</td>
+<td>REG0x3D[15:11]</td>
+</tr>
+<tr>
+<td><strong>VSYS</strong></td>
+<td>系统电压 (SRN, 2s-4s 电池)</td>
+<td>REG0x3C[7:6]</td>
+</tr>
+<tr>
+<td><strong>ACOK</strong></td>
+<td>适配器移除 (ACOK 高→低)</td>
+<td>单次触发</td>
+</tr>
+<tr>
+<td><strong>BATPRES</strong></td>
+<td>电池移除 (BATPRES 低→高)</td>
+<td>单次触发</td>
+</tr>
+<tr>
+<td><strong>CMPOUT</strong></td>
+<td>独立比较器输出 (CMPOUT 高→低)</td>
+<td>可编程去抖</td>
+</tr>
+</tbody>
+</table>
+<p>PROCHOT 脉冲最小宽度: 10ms (默认 REG0x3C[4:3]=10)</p>
+<hr />
+<h2 id="_21">典型应用电路要点<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<h3 id="_22">功率级<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>适配器 ──→ ACFET ──→ RBFET ──→ 检测电阻 RAC ──→ SYS (系统电源轨)
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>                                          │
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>                                     BATFET ──→ 检测电阻 RSR ──→ 电池
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>                                          │
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>                                    Buck 上管 ──→ 电感 ──→ 电池
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>                                          │
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>                                    Buck 下管 ──→ GND
+</code></pre></div>
+<h3 id="_23">检测电阻<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<ul>
+<li>RAC (输入检测): 典型 10mΩ</li>
+<li>RSR (充电检测): 典型 10mΩ</li>
+<li>可配比: 1:1, 2:1, 1:2 (REG0x3B[13:12])</li>
+</ul>
+<h3 id="800khz">建议元件值 (800kHz)<a class="headerlink" href="#800khz" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>充电电流</th>
+<th>电感 Lo</th>
+<th>输出电容 Co</th>
+<th>检测电阻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2A</td>
+<td>6.8/8.2µH</td>
+<td>20µF</td>
+<td>10mΩ</td>
+</tr>
+<tr>
+<td>3A</td>
+<td>5.6/6.8µH</td>
+<td>20µF</td>
+<td>10mΩ</td>
+</tr>
+<tr>
+<td>4A</td>
+<td>3.3/4.7µH</td>
+<td>20µF</td>
+<td>10mΩ</td>
+</tr>
+<tr>
+<td>6A</td>
+<td>3.3µH</td>
+<td>30µF</td>
+<td>10mΩ</td>
+</tr>
+<tr>
+<td>8A</td>
+<td>2.2µH</td>
+<td>40µF</td>
+<td>10mΩ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="layout_1">Layout 要点<a class="headerlink" href="#layout_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>大电流路径 (VCC→ACFET→RBFET→RAC→电感→电池) 铜皮要宽</li>
+<li>SRP/SRN 开尔文连接直接到检测电阻两端，差分走线</li>
+<li>PowerPAD 必须焊接到底层散热焊盘，打孔连接到模拟地和功率地</li>
+<li>模拟地和功率地仅在 PowerPAD 处星形连接</li>
+<li>BTST 电容 (47nF) 尽量靠近 BTST 和 PHASE 引脚</li>
+<li>REGN 电容 (≥2.2µF) 靠近 REGN 引脚</li>
+<li>ACDRV/CMSRC/BATDRV 各串 4kΩ 限流电阻</li>
+</ul>
+<hr />
+<h2 id="_24">常见故障排查<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>可能原因</th>
+<th>检查点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不充电</td>
+<td>CHRG_INHIBIT 置 1</td>
+<td>REG0x12[0] 是否为 0</td>
+</tr>
+<tr>
+<td>不充电</td>
+<td>ILIM &lt; 120mV</td>
+<td>ILIM 分压电阻是否正常</td>
+</tr>
+<tr>
+<td>不充电</td>
+<td>ACOK 未变高</td>
+<td>ACDET 分压 &gt; 2.4V? VCC &gt; UVLO?</td>
+</tr>
+<tr>
+<td>不充电</td>
+<td>看门狗超时</td>
+<td>EC 是否 175s 内写 ChargeVoltage/ChargeCurrent</td>
+</tr>
+<tr>
+<td>ACFET 不导通</td>
+<td>ACOK 去抖未完成</td>
+<td>首次 150ms, 后续 1.3s</td>
+</tr>
+<tr>
+<td>ACFET 锁存关断</td>
+<td>7 次导通失败或 ACOC</td>
+<td>检查 Cgs/Cgd 比例, 去除适配器复位</td>
+</tr>
+<tr>
+<td>充电电流小</td>
+<td>BATLOWV 触发</td>
+<td>SRN &lt; 2.5V? 电池深度放电?</td>
+</tr>
+<tr>
+<td>PROCHOT 一直触发</td>
+<td>适配器功率不足</td>
+<td>检查 IADP 电压、INOM/ICRIT 阈值设定</td>
+</tr>
+<tr>
+<td>升压模式不工作</td>
+<td>REG0x37[2] 未使能</td>
+<td>写 1 到 REG0x37[2]</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

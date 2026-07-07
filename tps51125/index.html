@@ -1,0 +1,2071 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="主板电路分析与芯片手册整理">
+      
+      
+      
+      
+        <link rel="prev" href="../isl88731a-timing-natural/">
+      
+      
+        <link rel="next" href="../tps51123/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>TPS51125 系统供电控制器 - 电路学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tps51125" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="电路学习笔记" class="md-header__button md-logo" aria-label="电路学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            电路学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TPS51125 系统供电控制器
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换亮色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换亮色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="电路学习笔记" class="md-nav__button md-logo" aria-label="电路学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    电路学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rtc-signals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RTC 相关信号
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20v-power-rail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20V 供电公共点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    隔离保护电路
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    隔离保护电路
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bq24780s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BQ24780S 充电控制器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bq24727/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BQ24727 充电控制器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ISL88731A 充电控制器
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ISL88731A 充电控制器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../isl88731a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    芯片说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../isl88731a-reference-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型参考设计分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../isl88731a-timing-natural/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自然语言时序说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PWM 供电电路
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PWM 供电电路
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TPS51125 系统供电控制器
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TPS51125 系统供电控制器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心特性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-pin-tssop-top-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        引脚排列 (20 PIN TSSOP, Top View)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        引脚功能详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="引脚功能详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        电源与驱动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        控制与监视
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键电气参数
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v5filt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ V5FILT 引脚深度说明
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚠️ V5FILT 引脚深度说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v5filt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V5FILT 的真实作用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        正确的连接方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        故障现象
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完整工作流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="完整工作流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段 1：电源就绪
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段 2：配置读取
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段 3：PWM 启动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段 4：闭环调节
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段 5：电源就绪
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工作原理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="工作原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#d-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D-CAP 控制模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启动时序
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        保护功能
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        典型应用电路
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="典型应用电路">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5v33v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标准 5V/3.3V 双路输出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        外围元件推荐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见故障与维修
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tps51123/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TPS51123 系统供电控制器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    待机与开机时序
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    待机与开机时序
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ec-standby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EC 待机架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心特性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-pin-tssop-top-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        引脚排列 (20 PIN TSSOP, Top View)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        引脚功能详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="引脚功能详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        电源与驱动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        控制与监视
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键电气参数
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v5filt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ V5FILT 引脚深度说明
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚠️ V5FILT 引脚深度说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v5filt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V5FILT 的真实作用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        正确的连接方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        故障现象
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完整工作流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="完整工作流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段 1：电源就绪
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段 2：配置读取
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段 3：PWM 启动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段 4：闭环调节
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        阶段 5：电源就绪
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工作原理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="工作原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#d-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D-CAP 控制模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启动时序
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        保护功能
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        典型应用电路
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="典型应用电路">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5v33v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标准 5V/3.3V 双路输出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        外围元件推荐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见故障与维修
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tps51125">TPS51125 系统供电控制器<a class="headerlink" href="#tps51125" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>数据来源: TI TPS51125 数据手册 SLUSA05C (2013年1月)
+<a href="../assets/tps51125.pdf">原始数据手册 (PDF)</a></p>
+</blockquote>
+<hr />
+<h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>TPS51125 是 TI 推出的同步 Buck 控制器，专门设计用于笔记本电脑系统供电。它是笔记本主板上最常见的芯片之一，几乎所有 2010~2018 年的笔记本都能看到它的身影。</p>
+<p>采用双路独立同步 Buck 架构，通常用于产生主板上的 5V 和 3.3V 系统主供电。支持 D-CAP™ 自适应导通时间控制，具有超快的负载瞬态响应，不需要外部补偿电路。</p>
+<h3 id="_2">核心特性<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>输入电压范围</strong></td>
+<td>4.5V ~ 28V</td>
+</tr>
+<tr>
+<td><strong>输出电压范围</strong></td>
+<td>0.75V ~ 5.5V</td>
+</tr>
+<tr>
+<td><strong>输出精度</strong></td>
+<td>±0.8%</td>
+</tr>
+<tr>
+<td><strong>开关频率</strong></td>
+<td>300kHz 固定</td>
+</tr>
+<tr>
+<td><strong>控制模式</strong></td>
+<td>D-CAP 自适应导通时间</td>
+</tr>
+<tr>
+<td><strong>工作温度</strong></td>
+<td>-40°C ~ +85°C</td>
+</tr>
+<tr>
+<td><strong>封装</strong></td>
+<td>20 Pin TSSOP, 6.50 × 4.40 mm²</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="20-pin-tssop-top-view">引脚排列 (20 PIN TSSOP, Top View)<a class="headerlink" href="#20-pin-tssop-top-view" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>                  VREG3  VREG5  VIN    EN1    EN2
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                   20     19     18     17     16
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>      PGOOD1   1                                      15    ILIM
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>      PGOOD2   2                                      14    FB1
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>      V5FILT   3                                      13    OUT1
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>      LL1      4                                      12    DRVH1
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>      GND      5                                      11    DRVL1
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>      NC       6                                      10    VBST1
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>      SKIPSEL  7                                       9    VBST2
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>      DRVL2    8
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>                 DRVH2  OUT2   FB2    MODE   SS
+</code></pre></div>
+<hr />
+<h2 id="_3">引脚功能详解<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">电源与驱动<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>名称</th>
+<th>类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>18</td>
+<td><strong>VIN</strong></td>
+<td>电源输入</td>
+<td>芯片主电源输入，直接来自系统公共点</td>
+</tr>
+<tr>
+<td>19</td>
+<td><strong>VREG5</strong></td>
+<td>输出</td>
+<td>内部 5V LDO 输出，为栅极驱动器供电</td>
+</tr>
+<tr>
+<td>20</td>
+<td><strong>VREG3</strong></td>
+<td>输出</td>
+<td>内部 3.3V LDO 输出，为模拟电路供电</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>V5FILT</strong></td>
+<td>输入</td>
+<td>⭐ 内部 5V LDO 滤波引脚，必须接 1µF 陶瓷电容到地</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>DRVL1</strong></td>
+<td>输出</td>
+<td>通道 1 低端 MOSFET 栅极驱动</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>DRVH1</strong></td>
+<td>输出</td>
+<td>通道 1 高端 MOSFET 栅极驱动</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>DRVL2</strong></td>
+<td>输出</td>
+<td>通道 2 低端 MOSFET 栅极驱动</td>
+</tr>
+<tr>
+<td>19</td>
+<td><strong>DRVH2</strong></td>
+<td>输出</td>
+<td>通道 2 高端 MOSFET 栅极驱动</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>VBST1</strong></td>
+<td>电源</td>
+<td>通道 1 自举电容连接</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>VBST2</strong></td>
+<td>电源</td>
+<td>通道 2 自举电容连接</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>GND</strong></td>
+<td>地</td>
+<td>信号地和功率地</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">控制与监视<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>引脚</th>
+<th>名称</th>
+<th>类型</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>17</td>
+<td><strong>EN1</strong></td>
+<td>输入</td>
+<td>通道 1 使能，高有效</td>
+</tr>
+<tr>
+<td>16</td>
+<td><strong>EN2</strong></td>
+<td>输入</td>
+<td>通道 2 使能，高有效</td>
+</tr>
+<tr>
+<td>1</td>
+<td><strong>PGOOD1</strong></td>
+<td>开漏输出</td>
+<td>通道 1 电源良好指示</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>PGOOD2</strong></td>
+<td>开漏输出</td>
+<td>通道 2 电源良好指示</td>
+</tr>
+<tr>
+<td>15</td>
+<td><strong>ILIM</strong></td>
+<td>输入</td>
+<td>过流阈值设置</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>SKIPSEL</strong></td>
+<td>输入</td>
+<td>轻载模式选择</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>FB1</strong></td>
+<td>输入</td>
+<td>通道 1 反馈电压输入</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>FB2</strong></td>
+<td>输入</td>
+<td>通道 2 反馈电压输入</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>V5FILT</strong></td>
+<td>输入</td>
+<td>内部 5V LDO 滤波</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>OUT1</strong></td>
+<td>输入</td>
+<td>通道 1 输出电压检测</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>OUT2</strong></td>
+<td>输入</td>
+<td>通道 2 输出电压检测</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_6">关键电气参数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>条件</th>
+<th>最小值</th>
+<th>典型值</th>
+<th>最大值</th>
+<th>单位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VIN 工作电压</td>
+<td>-</td>
+<td>4.5</td>
+<td>-</td>
+<td>28</td>
+<td>V</td>
+</tr>
+<tr>
+<td>VREG5 输出电压</td>
+<td>VIN &gt; 5.5V</td>
+<td>4.8</td>
+<td>5.0</td>
+<td>5.2</td>
+<td>V</td>
+</tr>
+<tr>
+<td>VREG3 输出电压</td>
+<td>VIN &gt; 3.8V</td>
+<td>3.1</td>
+<td>3.3</td>
+<td>3.5</td>
+<td>V</td>
+</tr>
+<tr>
+<td>输出电压精度</td>
+<td>0°C ~ 85°C</td>
+<td>-0.8%</td>
+<td>-</td>
+<td>+0.8%</td>
+<td>%</td>
+</tr>
+<tr>
+<td>开关频率</td>
+<td>-</td>
+<td>270</td>
+<td>300</td>
+<td>330</td>
+<td>kHz</td>
+</tr>
+<tr>
+<td>静态电流</td>
+<td>双通道工作</td>
+<td>-</td>
+<td>2.5</td>
+<td>4</td>
+<td>mA</td>
+</tr>
+<tr>
+<td>关断电流</td>
+<td>EN=0</td>
+<td>-</td>
+<td>1</td>
+<td>10</td>
+<td>µA</td>
+</tr>
+<tr>
+<td>软启动时间</td>
+<td>-</td>
+<td>-</td>
+<td>1.2</td>
+<td>-</td>
+<td>ms</td>
+</tr>
+<tr>
+<td>热关断阈值</td>
+<td>上升</td>
+<td>-</td>
+<td>145</td>
+<td>-</td>
+<td>°C</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="v5filt">⚠️ V5FILT 引脚深度说明<a class="headerlink" href="#v5filt" title="Permanent link">&para;</a></h2>
+<p>这是 TPS51125 最容易被忽略但最关键的一个引脚：</p>
+<h3 id="v5filt_1">V5FILT 的真实作用<a class="headerlink" href="#v5filt_1" title="Permanent link">&para;</a></h3>
+<p>V5FILT 不是普通的滤波引脚，它是 <strong>内部 5V LDO 的反馈检测点</strong>。</p>
+<p>芯片内部的 VREG5 LDO 并不是直接从 VREG5 引脚取样，而是从 V5FILT 引脚取样。这个设计的目的是为了补偿 VREG5 输出到栅极驱动器之间的线损。</p>
+<h3 id="_7">正确的连接方式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>✅ <strong>标准设计：</strong>
+- V5FILT 引脚通过一个 0Ω 电阻或者直接短接到 VREG5 输出端
+- V5FILT 引脚必须接一个 1µF 的陶瓷电容到地，位置尽可能靠近引脚</p>
+<p>❌ <strong>绝对不能做的事：</strong>
+1.  不能悬空
+2.  不能只接电容不接 VREG5
+3.  不能接其他电压</p>
+<h3 id="_8">故障现象<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>如果 V5FILT 引脚的连接出现问题：
+- VREG5 输出电压会偏低，通常只有 3V ~ 4V
+- 栅极驱动电压不足，MOSFET 导通电阻变大，严重发热
+- 输出纹波巨大，甚至出现啸叫
+- 芯片频繁进入过流保护</p>
+<blockquote>
+<p>💡 这是维修 TPS51125 电路时最常见的隐性故障，90% 的"换了芯片还是不行"的问题，最后都是 V5FILT 引脚虚焊或者电容失效。</p>
+</blockquote>
+<hr />
+<h2 id="_9">完整工作流程<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p><img alt="TPS51125 工作流程分析" src="../assets/tps51125-workflow.png" /></p>
+<blockquote>
+<p>完整启动时序共分为 5 个阶段，任何一个阶段卡住都会导致 3V/5V 输出异常。</p>
+</blockquote>
+<h3 id="1">阶段 1：电源就绪<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>VIN 输入达到 5.5V 以上</li>
+<li>EN0 引脚被拉高到 0.5V 以上</li>
+<li>内部 LDO 开始工作，产生 VREG3、VREG5 和 REF 基准电压</li>
+</ol>
+<h3 id="2">阶段 2：配置读取<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>芯片读取所有配置引脚的状态：
+- SKIPSEL：轻载工作模式选择
+- TONSEL：开关频率设置
+- VFB1/VFB2：输出电压分压值</p>
+<h3 id="3pwm">阶段 3：PWM 启动<a class="headerlink" href="#3pwm" title="Permanent link">&para;</a></h3>
+<ol>
+<li>ENTRIP1/ENTRIP2 引脚被拉高</li>
+<li>对应通道开始软启动</li>
+<li>上管导通给电感充电，下管导通给电感放电</li>
+<li>LL 引脚反馈开关节点状态</li>
+</ol>
+<h3 id="4">阶段 4：闭环调节<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<ol>
+<li>输出电压通过 OUT 引脚检测</li>
+<li>输出电压通过 FB 引脚取样反馈</li>
+<li>D-CAP 控制器自动调节导通时间</li>
+<li>BST 自举电路通过 PWM 脉冲自动充电</li>
+</ol>
+<h3 id="5">阶段 5：电源就绪<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>输出电压稳定 2ms 后，PGOOD 引脚释放</li>
+<li>两路都正常后，系统 PG 信号有效</li>
+</ol>
+<hr />
+<h2 id="_10">工作原理<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h3 id="d-cap">D-CAP 控制模式<a class="headerlink" href="#d-cap" title="Permanent link">&para;</a></h3>
+<p>TPS51125 最核心的特点就是它的 D-CAP 控制模式：
+- 不需要外部补偿网络
+- 自适应导通时间，自动跟踪输入输出电压
+- 负载瞬态响应极快，典型 &lt;1µs
+- 输出电容可以使用低 ESR 的陶瓷电容</p>
+<p>这也是为什么它成为笔记本系统供电标准的原因：外围元件极少，调试简单，可靠性极高。</p>
+<h3 id="_11">启动时序<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<ol>
+<li>VIN 上升超过 4.5V，内部 LDO 开始工作</li>
+<li>VREG5 上升到 5V，VREG3 上升到 3.3V</li>
+<li>当 EN 引脚被拉高后，软启动开始</li>
+<li>输出电压以 1.2ms 斜率上升到设定值</li>
+<li>输出电压达到 92% 设定值后，PGOOD 被释放</li>
+</ol>
+<hr />
+<h2 id="_12">保护功能<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>保护类型</th>
+<th>阈值</th>
+<th>响应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>输入欠压锁定</strong></td>
+<td>VIN &lt; 4.2V</td>
+<td>关断所有驱动器</td>
+</tr>
+<tr>
+<td><strong>输出过压</strong></td>
+<td>VOUT &gt; 115% 设定值</td>
+<td>关断上管，强制打开下管</td>
+</tr>
+<tr>
+<td><strong>过流保护</strong></td>
+<td>可通过 ILIM 引脚设置</td>
+<td>打嗝模式保护</td>
+</tr>
+<tr>
+<td><strong>热关断</strong></td>
+<td>Tj &gt; 145°C</td>
+<td>关断所有功能，120°C 恢复</td>
+</tr>
+<tr>
+<td><strong>欠压保护</strong></td>
+<td>VOUT &lt; 70% 设定值</td>
+<td>PGOOD 拉低</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_13">典型应用电路<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h3 id="5v33v">标准 5V/3.3V 双路输出<a class="headerlink" href="#5v33v" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>公共点 ──┬──→ VIN
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>         ├──→ 自举电容 ──→ VBST1
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>         ├──→ 自举电容 ──→ VBST2
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>         │
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>         ├──→ 上管 Q1 ──→ 电感 L1 ──→ 5V 输出
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>         │            ↓
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>         └──→ 下管 Q2 ──→ GND
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>公共点 ──┬──→ 上管 Q3 ──→ 电感 L2 ──→ 3.3V 输出
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>         │            ↓
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>         └──→ 下管 Q4 ──→ GND
+</code></pre></div>
+<h3 id="_14">外围元件推荐<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>元件</th>
+<th>数值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电感 L1/L2</td>
+<td>3.3µH</td>
+<td>饱和电流 ≥15A</td>
+</tr>
+<tr>
+<td>上管 Q1/Q3</td>
+<td>AO4407</td>
+<td>P 沟道 MOSFET</td>
+</tr>
+<tr>
+<td>下管 Q2/Q4</td>
+<td>AO4413</td>
+<td>N 沟道 MOSFET</td>
+</tr>
+<tr>
+<td>输出电容</td>
+<td>4×22µF</td>
+<td>X7R 陶瓷电容</td>
+</tr>
+<tr>
+<td>输入电容</td>
+<td>2×22µF</td>
+<td>陶瓷电容</td>
+</tr>
+<tr>
+<td>自举电容</td>
+<td>0.1µF</td>
+<td>陶瓷电容</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_15">常见故障与维修<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>故障现象</th>
+<th>90% 概率的原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>公共点短路，烧保险</td>
+<td>下管 Q2/Q4 D-S 击穿</td>
+</tr>
+<tr>
+<td>只有 3.3V 没有 5V</td>
+<td>上管 Q1 烧坏，或者 VREG5 LDO 失效</td>
+</tr>
+<tr>
+<td>输出电压只有一半</td>
+<td>FB 分压电阻变质</td>
+</tr>
+<tr>
+<td>输出纹波大，跳音</td>
+<td>输出陶瓷电容失效</td>
+</tr>
+<tr>
+<td>插上电源就掉电</td>
+<td>ILIM 电阻脱落，过流保护误触发</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 TPS51125 是笔记本主板上故障率最高的芯片之一，绝大多数 3V/5V 异常的故障最终都会追到这个芯片或者它周围的 MOSFET。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
