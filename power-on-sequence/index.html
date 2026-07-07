@@ -11,10 +11,8 @@
       
       
       
-        <link rel="prev" href="../isl88731a-reference-design/">
+        <link rel="prev" href="../ec-standby/">
       
-      
-        <link rel="next" href="../tps51125/">
       
       
         
@@ -25,7 +23,7 @@
     
     
       
-        <title>自然语言时序说明 - 电路学习笔记</title>
+        <title>上电时序与开机流程 - 电路学习笔记</title>
       
     
     
@@ -76,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#isl88731a" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              自然语言时序说明
+              上电时序与开机流程
             
           </span>
         </div>
@@ -314,8 +312,6 @@
       
   
   
-    
-  
   
   
     
@@ -328,11 +324,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -353,7 +351,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -424,8 +422,6 @@
                 
   
   
-    
-  
   
   
     
@@ -435,11 +431,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
         
           
           <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
@@ -460,7 +458,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -531,37 +529,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    自然语言时序说明
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../isl88731a-timing-natural/" class="md-nav__link">
         
   
   
@@ -577,70 +548,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        内部逻辑验证
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        适配器插入过程
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        适配器拔出过程
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        设计上的取舍
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -782,8 +689,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -794,13 +703,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -821,7 +728,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -864,10 +771,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../power-on-sequence/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    上电时序与开机流程
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -883,6 +817,126 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通用上电时序
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="通用上电时序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6070" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        硬启动阶段（故障占比 60%~70%）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2030" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        软启动阶段（故障占比 20%~30%）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统阶段（功能性故障）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pch-g531gw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PCH 待机条件分析（G531GW 实战案例）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PCH 待机条件分析（G531GW 实战案例）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PCH 内部电源域
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec-pch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EC ↔ PCH 关键交互信号
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        上电流程（图上标注的步骤）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -922,46 +976,102 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        内部逻辑验证
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        适配器插入过程
+        通用上电时序
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="通用上电时序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6070" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        硬启动阶段（故障占比 60%~70%）
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#2030" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        软启动阶段（故障占比 20%~30%）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        适配器拔出过程
+        系统阶段（功能性故障）
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#pch-g531gw" class="md-nav__link">
     <span class="md-ellipsis">
       
-        设计上的取舍
+        PCH 待机条件分析（G531GW 实战案例）
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="PCH 待机条件分析（G531GW 实战案例）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PCH 内部电源域
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec-pch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EC ↔ PCH 关键交互信号
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        上电流程（图上标注的步骤）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -982,71 +1092,144 @@
 
 
 
-<h1 id="isl88731a">ISL88731A 适配器插拔时序说明<a class="headerlink" href="#isl88731a" title="Permanent link">&para;</a></h1>
-<p><img alt="ISL88731A 典型应用电路" src="../assets/isl88731a-schematic.png" /></p>
+<h1 id="_1">上电时序与开机流程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>笔记本从插电到正常使用的完整上电先后顺序，以及故障排查的优先级指引。</p>
 <hr />
-<h2 id="_1">内部逻辑验证<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>所有我们之前说的时序，都可以在这个官方内部框图里找到对应：</p>
-<p><img alt="ISL88731A 内部功能框图" src="../assets/isl88731a-block-diagram.png" /></p>
-<p>你可以很清楚地看到：
-- ACOK就是一个干净的比较器，后面直接接开漏管，没有任何去抖，没有任何延时，所以拔出的时候才会零延迟
-- 所有栅极驱动的电源全部来自VDDP，和VCC完全无关，所以VDDP才是真正的闸门
-- PHASE是接到DC/DC转换器的输入端，不是输出端，所以它确实是输入引脚
-- 整个芯片没有任何隐藏的状态机，它做的每一件事，你都可以在这个图上找到对应的电路</p>
+<h2 id="_2">通用上电时序<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>主板上各电压产生的先后顺序，按 ACPI 电源状态划分：</p>
+<p><img alt="主板上电时序图" src="../assets/power-on-sequence.jpg" /></p>
+<h3 id="6070">硬启动阶段（故障占比 60%~70%）<a class="headerlink" href="#6070" title="Permanent link">&para;</a></h3>
+<p>这是故障最高发区域——大部分不开机问题都出在这里。</p>
+<table>
+<thead>
+<tr>
+<th>电源状态</th>
+<th>上电顺序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>G3</strong> 完全断电</td>
+<td>RTC 电路（插电就工作的实时时钟）</td>
+</tr>
+<tr>
+<td><strong>S5</strong> 待机</td>
+<td>隔保（公共点）→ 3V/5V 待机 → EC/PCH 待机条件 → 充电电路</td>
+</tr>
+<tr>
+<td>⚡ 触发</td>
+<td><strong>按下开机键</strong> — 待机转开机的分界点</td>
+</tr>
+<tr>
+<td><strong>S4</strong> 休眠</td>
+<td>内存主供电 → 桥供电 → 二级供电</td>
+</tr>
+<tr>
+<td><strong>S3</strong> 睡眠</td>
+<td>内存辅助供电 → CPU 辅助供电 → 二级/三级供电</td>
+</tr>
+<tr>
+<td><strong>S0</strong> 正常运行</td>
+<td>CPU 供电 → 显卡供电 → <strong>时钟电路 → 复位电路</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 硬启动收尾：时钟电路和复位电路是最后的关卡，这两步过了才算硬启动完成。</p>
+</blockquote>
+<h3 id="2030">软启动阶段（故障占比 20%~30%）<a class="headerlink" href="#2030" title="Permanent link">&para;</a></h3>
+<p>供电、时钟、复位都正常后，主板开始硬件自检：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>POST 开机自检 → 自检 CPU → 自检内存 → 自检 PCH → 自检显卡
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>→ 自检 EC → 选择显示通道 → 读 BIOS → 自检外设（硬盘/光驱/USB/键盘等）
+</code></pre></div>
+<h3 id="_3">系统阶段（功能性故障）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>硬件自检全部通过后进入系统加载：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>加载系统 → 加载驱动 → 加载软件 → 用户正常使用
+</code></pre></div>
+<p>这个阶段的故障属于系统、驱动、软件类问题，不属于硬件上电/自检故障。</p>
 <hr />
-<h2 id="_2">适配器插入过程<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>当你把适配器插进笔记本的那一刻起，整个过程是这样发生的：</p>
+<h2 id="pch-g531gw">PCH 待机条件分析（G531GW 实战案例）<a class="headerlink" href="#pch-g531gw" title="Permanent link">&para;</a></h2>
+<p>以下是以华硕 G531GW 为例的 PCH 待机开机条件分析，梳理了 PCH 内部各电源域与 EC 的信号交互：</p>
+<p><img alt="PCH 待机条件分析" src="../assets/pch-standby-g531gw.jpg" /></p>
+<h3 id="pch">PCH 内部电源域<a class="headerlink" href="#pch" title="Permanent link">&para;</a></h3>
+<p>PCH 内部分为三个不同休眠等级的供电分区：</p>
+<table>
+<thead>
+<tr>
+<th>分区</th>
+<th>别称</th>
+<th>触发条件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RTC</strong></td>
+<td>「植物人状态」</td>
+<td>CMOS 电池有电就工作</td>
+<td>保持时间更新、保存 BIOS 设置的最低功耗模块</td>
+</tr>
+<tr>
+<td><strong>DSW</strong> 深睡</td>
+<td>深度睡眠</td>
+<td>插电后最先启动</td>
+<td>VCCDSW_3P3、DSW_PWROK 就绪后激活</td>
+</tr>
+<tr>
+<td><strong>PRIM/SUS</strong> 浅休眠</td>
+<td>准备开机</td>
+<td>PCH 收到开机请求后</td>
+<td>VCCPRIM_3P3/1P8/1P05 供电就绪</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ec-pch">EC ↔ PCH 关键交互信号<a class="headerlink" href="#ec-pch" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>方向</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PWRBTN#</strong></td>
+<td>EC → PCH</td>
+<td>开机请求：EC 检测到按键后发给 PCH</td>
+</tr>
+<tr>
+<td><strong>RSMRST#</strong></td>
+<td>EC → PCH</td>
+<td>待机就绪：EC 通知 PCH 所有待机供电正常</td>
+</tr>
+<tr>
+<td><strong>SLP_S4# / SLP_S3#</strong></td>
+<td>PCH → EC</td>
+<td>开机授权：PCH 自检正常后允许 EC 开启后续供电</td>
+</tr>
+<tr>
+<td><strong>PM_SLP_SUS#</strong></td>
+<td>PCH → EC</td>
+<td>待机睡眠许可</td>
+</tr>
+<tr>
+<td><strong>ESPI 总线</strong></td>
+<td>双向</td>
+<td>PCH ↔ EC 专用通讯总线（ESPI_CS/CLK/RST/IO）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">上电流程（图上标注的步骤）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ol>
-<li>
-<p>适配器物理插入，ACIN电压开始上升。大约50微秒后，DCIN电压超过8V，芯片内部的欠压锁定释放，所有内部偏置电路开始工作。</p>
-</li>
-<li>
-<p>再经过大约200微秒，VDDP（就是我们说的REGN）电压稳定上升到5.2V。这是整个过程最重要的分界点，从这一刻开始，所有的栅极驱动电路、模拟比较器才真正准备好工作。</p>
-</li>
-<li>
-<p>当适配器电压上升到大约11.4V的时候，ACIN引脚的分压超过2.4V，内部适配器检测比较器触发。</p>
-</li>
-<li>
-<p>但是ISL88731A本身完全没有去抖电路，所以接下来的100毫秒里什么都不会发生。这段时间完全靠外部的PR17电阻和PC18电容进行RC滤波，滤除适配器插入时的弹跳和毛刺。</p>
-</li>
-<li>
-<p>100毫秒的去抖时间结束后，ACOK引脚被拉低，通过中断通知EC：适配器已经稳定插入了。</p>
-</li>
-<li>
-<p>EC收到中断后大约10毫秒，会开始通过SMBus总线写入充电电压、充电电流、适配器电流限制这些参数。</p>
-</li>
-<li>
-<p>所有寄存器配置完成后，Buck转换器才会真正开始工作。充电电流会以每400微秒增加128mA的速度缓慢爬升，直到达到设定值。对于最大8A充电来说，整个软启动过程大约需要25毫秒。</p>
-</li>
+<li>CMOS 电池供电 → RTC 电路工作</li>
+<li>插入适配器/电池 → 待机 3V/5V 产生 → EC/PCH 待机模块供电</li>
+<li>PCH DSW 模块激活（VCCDSW_3P3、DSP_PWROK）→ 按下开关，EC 发 PWRBTN# 请求开机</li>
+<li>PCH PRIM 模块激活 → RSMRST 抬高 → SLP_SUS# 给 EC → EC 开启 SUS 电压</li>
+<li>PCH 内部 G3 → DSW → PRIM 模块全部就绪 → ESPI 总线开始通讯</li>
+<li>ESPI 通讯正常 → PCH 发出 SLP_S4# / SLP_S3# 授权开机</li>
+<li>EC 发出 S4_ON → 开启内存主供电等后续电压</li>
 </ol>
-<p>从你插进适配器，到充电真正开始，整个过程大约需要130毫秒左右。</p>
-<hr />
-<h2 id="_3">适配器拔出过程<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>拔出适配器的响应速度要快得多，整个过程在微秒级别完成：</p>
-<ol>
-<li>
-<p>适配器物理拔出，ACIN电压开始下降。</p>
-</li>
-<li>
-<p>当适配器电压降到11.4V以下，ACIN引脚分压低于2.4V的一瞬间，ACOK会被立即拉高，没有任何去抖，没有任何延迟，整个过程不会超过5微秒。</p>
-</li>
-<li>
-<p>EC会在1微秒内收到这个中断，立即知道适配器已经被拔掉了。</p>
-</li>
-<li>
-<p>几乎同时，VDDP LDO会被硬件关断，所有栅极驱动电源消失，上下管立即停止所有开关动作。</p>
-</li>
-<li>
-<p>剩下的事情就交给外部电路了，通常会在100微秒到1毫秒之间完成从适配器到电池的切换。</p>
-</li>
-</ol>
-<p>这就是ISL88731A最大的特点：插入的时候慢得要死要等100毫秒，拔出的时候比谁都快，零延迟响应。</p>
-<hr />
-<h2 id="_4">设计上的取舍<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>这个看起来很奇怪的特性其实是故意设计的：
-- 插入的时候慢是为了绝对可靠，宁可晚一点，也绝对不能误触发
-- 拔出的时候快是为了系统安全，适配器一拔，必须立刻通知EC，一秒钟都不能等</p>
-<p>这也是为什么这个已经15年的老芯片，直到今天还有大量的人在用的原因。它不聪明，没有花里胡哨的功能，但是它做对了最重要的两件事：不该开的时候绝对不开，该关的时候立刻就关。</p>
 
 
 

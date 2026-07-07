@@ -14,6 +14,8 @@
         <link rel="prev" href="../tps51123/">
       
       
+        <link rel="next" href="../power-on-sequence/">
+      
       
         
       
@@ -960,10 +962,66 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fx505gd-ec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实战案例：FX505GD EC 待机触发分析
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实战案例：FX505GD EC 待机触发分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图上关键信号解析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../power-on-sequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    上电时序与开机流程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1157,6 +1215,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fx505gd-ec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实战案例：FX505GD EC 待机触发分析
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实战案例：FX505GD EC 待机触发分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图上关键信号解析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1337,6 +1423,23 @@
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="fx505gd-ec">实战案例：FX505GD EC 待机触发分析<a class="headerlink" href="#fx505gd-ec" title="Permanent link">&para;</a></h2>
+<p>以下是以华硕 FX505GD（EC: IT8987E）为例的完整 EC 待机触发逻辑分析，由维修从业者手绘整理：</p>
+<p><img alt="FX505GD EC 待机触发逻辑" src="../assets/ec-standby-fx505gd.jpg" /></p>
+<h3 id="_10">图上关键信号解析<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p><strong>EC 工作三大前提</strong>（缺一不可）：
+1. <strong>供电</strong>：+3VACC 待机供电 + 10μF 滤波电容
+2. <strong>时钟</strong>：32.768KHz 晶振 — EC 的心跳
+3. <strong>复位</strong>：EC_RST#（14脚），低电平有效</p>
+<p><strong>开机触发链路</strong>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>LID_SW(17脚) 合盖检测 → PWR_SW(107脚) 开机键 → EC 检测到按键
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>→ RSMRST# 通知 PCH 待机就绪 → PM_PWRBTN#(87脚) 请求 PCH 开机
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>→ PCH 回复 PM_SUSB# / PM_SUSC# → EC 开启后续供电
+</code></pre></div></p>
+<p><strong>维修优先级提示</strong>：
+- AC_IN_OC、SMB0_CLK、SMB0_DAT 这三个信号异常 <strong>一般不导致不触发</strong>，排查时可跳
+- BIOS + EC ROM 连接到 EC 的 4/2/5/6 脚</p>
 
 
 
