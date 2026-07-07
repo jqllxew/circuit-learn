@@ -40,6 +40,9 @@ markdown_extensions:
   - toc:
       permalink: true
 
+extra_javascript:
+  - assets/pw.js
+
 nav:
   - 首页: index.md
   - RTC 相关信号: rtc-signals.md
