@@ -1,0 +1,58 @@
+site_name: 电路学习笔记
+site_description: 主板电路分析与芯片手册整理
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换暗色模式
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换亮色模式
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+
+nav:
+  - 首页: index.md
+  - RTC 相关信号: rtc-signals.md
+  - 20V 供电公共点: 20v-power-rail.md
+  - 隔离保护电路:
+    - BQ24780S 充电控制器: bq24780s.md
+    - BQ24727 充电控制器: bq24727.md
+    - ISL88731A 充电控制器:
+      - 芯片说明: isl88731a.md
+      - 典型参考设计分析: isl88731a-reference-design.md
+      - 自然语言时序说明: isl88731a-timing-natural.md
+  - PWM 供电电路:
+    - TPS51125 系统供电控制器: tps51125.md
+    - TPS51123 系统供电控制器: tps51123.md
+  - 待机与开机时序:
+    - EC 待机架构: ec-standby.md
