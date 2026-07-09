@@ -61,3 +61,5 @@ nav:
   - 待机与开机时序:
     - EC 待机架构: ec-standby.md
     - 上电时序与开机流程: power-on-sequence.md
+  - 内存供电:
+    - DDR VDDQ/VTTREF/VTT: ddr-power-signals.md
