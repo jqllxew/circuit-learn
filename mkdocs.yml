@@ -58,6 +58,11 @@ nav:
   - PWM 供电电路:
     - TPS51125 系统供电控制器: tps51125.md
     - TPS51123 系统供电控制器: tps51123.md
+  - CPU 平台供电:
+    - VCore — CPU 核心供电: vcore.md
+    - VCCSA — 系统代理供电: vccsa.md
+    - VCCIO — I/O 供电: vccio.md
+    - VCCGT — 核显供电: vccgt.md
   - 待机与开机时序:
     - EC 待机架构: ec-standby.md
     - 上电时序与开机流程: power-on-sequence.md
