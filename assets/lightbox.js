@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.key === 'Escape') modal.style.display = 'none';
     });
 
-    document.querySelectorAll('.md-content img').forEach(function (pic) {
+    document.querySelectorAll('article img, .md-content img').forEach(function (pic) {
         var src = pic.src;
         pic.style.cursor = 'zoom-in';
         pic.title = '点击放大';
