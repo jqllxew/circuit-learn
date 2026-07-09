@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../isl88731a/">
+        <link rel="prev" href="../vccgt/">
       
       
-        <link rel="next" href="../isl88731a-timing-natural/">
+        <link rel="next" href="../ec-standby/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>典型参考设计分析 - 电路学习笔记</title>
+        <title>待机供电轨 (VCCST/VCCPRIM) - 电路学习笔记</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#isl88731a" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              典型参考设计分析
+              待机供电轨 (VCCST/VCCPRIM)
             
           </span>
         </div>
@@ -314,8 +314,6 @@
       
   
   
-    
-  
   
   
     
@@ -328,11 +326,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -353,7 +353,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -424,8 +424,6 @@
                 
   
   
-    
-  
   
   
     
@@ -435,11 +433,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
         
           
           <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
@@ -460,7 +460,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -503,37 +503,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    典型参考设计分析
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../isl88731a-reference-design/" class="md-nav__link">
         
   
   
@@ -549,114 +522,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔍 内部逻辑框图验证
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📋 电路概述
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔌 关键引脚连接
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚡ 适配器插入完整时序 (基于本电路)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚡ 适配器拔出完整时序
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🎯 本电路的特殊设计细节
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🐛 这个电路最常见的故障
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bq" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📊 与BQ系列的时序对比
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -999,8 +864,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1011,13 +878,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -1038,7 +903,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1053,10 +918,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../standby-power-rails/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    待机供电轨 (VCCST/VCCPRIM)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1072,6 +964,142 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概述
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        供电链路
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键信号
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关键信号">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vccst-cpu-standby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VCCST (CPU Standby)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vccprim-primary-standby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VCCPRIM (Primary Standby)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vddq_stby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VDDQ_STBY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vccio_stby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VCCIO_STBY
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        开机逻辑中的角色
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见故障排查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        待补充
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1256,21 +1284,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔍 内部逻辑框图验证
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📋 电路概述
+        概述
       
     </span>
   </a>
@@ -1281,7 +1298,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔌 关键引脚连接
+        供电链路
       
     </span>
   </a>
@@ -1292,10 +1309,60 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚡ 适配器插入完整时序 (基于本电路)
+        关键信号
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="关键信号">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vccst-cpu-standby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VCCST (CPU Standby)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vccprim-primary-standby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VCCPRIM (Primary Standby)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vddq_stby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VDDQ_STBY
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vccio_stby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VCCIO_STBY
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1303,7 +1370,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚡ 适配器拔出完整时序
+        开机逻辑中的角色
       
     </span>
   </a>
@@ -1314,7 +1381,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 本电路的特殊设计细节
+        常见故障排查
       
     </span>
   </a>
@@ -1325,18 +1392,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🐛 这个电路最常见的故障
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bq" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📊 与BQ系列的时序对比
+        待补充
       
     </span>
   </a>
@@ -1360,374 +1416,154 @@
 
 
 
-<h1 id="isl88731a">ISL88731A 典型参考设计分析<a class="headerlink" href="#isl88731a" title="Permanent link">&para;</a></h1>
+<h1 id="_1">待机供电轨<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>基于真实笔记本电路原理图的完整分析
-对应芯片: ISL88731A TQFN-28</p>
+<p>待机供电轨是主板在 S3/S5 休眠状态下仍然维持的电压通道，确保 EC/PCH/RTC/内存等关键模块在系统"关机"时仍具备唤醒能力。</p>
 </blockquote>
-<p><img alt="ISL88731A 典型应用电路" src="../assets/isl88731a-schematic.png" /></p>
 <hr />
-<h2 id="_1">🔍 内部逻辑框图验证<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p><img alt="ISL88731A 内部功能框图" src="../assets/isl88731a-block-diagram.png" /></p>
-<blockquote>
-<p>✅ 我们之前所有的分析，100%和这个官方框图完全对应。几个最关键的验证点：</p>
-</blockquote>
+<h2 id="_2">概述<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>现代笔记本主板中，即使系统处于 S5（软关机）或 S3（睡眠），仍有多条供电轨保持输出。这些"待机轨"由 <strong>AC 适配器 → 隔离保护电路 → 待机电源控制器</strong>（如 TPS51125/TPS51123 的 3.3V/5V 待机 LDO）产生，是整板开机时序的起点。</p>
 <table>
 <thead>
 <tr>
-<th>我们之前的结论</th>
-<th>官方框图证实</th>
+<th>待机轨</th>
+<th>电压</th>
+<th>供电对象</th>
+<th>状态</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>✅ VDDP 是所有栅极驱动的唯一电源</td>
-<td>可以清楚看到DC/DC转换器和两个栅极驱动器的电源全部来自VDDP，和VCC完全无关</td>
+<td><strong>VCCST</strong></td>
+<td>1.05V</td>
+<td>PCH Standby Well (RTC/ME/SPI)</td>
+<td>S0/S3/S5 均有效</td>
 </tr>
 <tr>
-<td>✅ ACOK完全没有去抖</td>
-<td>就是一个比较器直接驱动开漏管，中间没有任何计时器、去抖电路</td>
+<td><strong>VCCPRIM</strong></td>
+<td>1.0V / 1.05V</td>
+<td>PCH Primary Well</td>
+<td>S0/S3/S5 均有效</td>
 </tr>
 <tr>
-<td>✅ 拔出时ACOK零延迟</td>
-<td>比较器输出直接连到栅极，没有任何逻辑，触发就变</td>
+<td><strong>VCCIO_STBY</strong></td>
+<td>1.0V</td>
+<td>I/O Standby Logic</td>
+<td>S3</td>
 </tr>
 <tr>
-<td>✅ REGN/VDDP是真正的闸门</td>
-<td>线性稳压器输出VDDP给所有功率部分供电，VCC只给数字逻辑</td>
+<td><strong>VDDQ_STBY</strong></td>
+<td>1.2V</td>
+<td>DDR PHY Standby</td>
+<td>S3</td>
 </tr>
 <tr>
-<td>✅ PHASE是输入</td>
-<td>PHASE引脚是接到DC/DC转换器的输入端，不是输出</td>
+<td><strong>VCCPLL</strong></td>
+<td>1.8V</td>
+<td>时钟 PLL</td>
+<td>S0/S3</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>💡 这就是为什么我一直说ISL88731A的设计非常诚实：它的内部逻辑框图是什么样，它就怎么工作，没有任何隐藏的状态机，没有任何自作聪明的逻辑。它做的每一件事，你都可以在这个图上找到对应的电路。</p>
+<p><strong>说明</strong>：具体电压值取决于平台代际（Intel 6th~14th Gen 各有差异），本表以笔记本维修常见值列出。</p>
 </blockquote>
 <hr />
-<h2 id="_2">📋 电路概述<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>这是一个非常标准的ISL88731A应用电路，广泛出现在2012~2016年的笔记本电脑上。典型特征：
-- 无内置ACFET/BATFET驱动，使用外部分离器件
-- 开关频率固定300kHz
-- 最大充电电流8A
-- 支持1~4节锂电池</p>
+<h2 id="_3">供电链路<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>AC 适配器 (19V)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ↓
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>隔离保护 (ACFET/RBFET)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ↓
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>20V 公共供电轨
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ↓
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>待机电源控制器 (LDO 3.3V/5V)
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    ↓                   ↓
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>3V_S5 (VA)          5V_S5
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    ↓                   ↓
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>VCCST 稳压器       VCCPRIM 稳压器
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>(1.05V)             (1.05V)
+</code></pre></div>
 <hr />
-<h2 id="_3">🔌 关键引脚连接<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>引脚</th>
-<th>名称</th>
-<th>本电路连接</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>22</td>
-<td>DCIN</td>
-<td>直接接适配器输入</td>
-<td>芯片主电源，无二极管ORing</td>
-</tr>
-<tr>
-<td>2</td>
-<td>ACIN</td>
-<td>PR134(82.5K) + PR132(22K) 分压</td>
-<td>适配器检测，阈值 = 2.4V × (82.5+22)/22 ≈ 11.4V</td>
-</tr>
-<tr>
-<td>13</td>
-<td>ACOK</td>
-<td>开漏输出，上拉到+3VPCU</td>
-<td>适配器存在指示，低有效，直接到EC</td>
-</tr>
-<tr>
-<td>21</td>
-<td>VDDP</td>
-<td>就是REGN，输出5.2V</td>
-<td>所有栅极驱动的电源</td>
-</tr>
-<tr>
-<td>24</td>
-<td>UGATE</td>
-<td>上管PQ28栅极</td>
-<td>高侧N-MOSFET AO4496</td>
-</tr>
-<tr>
-<td>23</td>
-<td>PHASE</td>
-<td>上下管中间节点LX</td>
-<td>开关节点</td>
-</tr>
-<tr>
-<td>20</td>
-<td>LGATE</td>
-<td>下管PQ3栅极</td>
-<td>低侧N-MOSFET AO4712</td>
-</tr>
-<tr>
-<td>25</td>
-<td>BOOT</td>
-<td>PR37(2.7Ω) + PC20(0.1µF) 到PHASE</td>
-<td>自举电路</td>
-</tr>
-<tr>
-<td>18</td>
-<td>CSOP / 17</td>
-<td>CSON</td>
-<td>充电电流检测，PR125 0.01Ω</td>
-</tr>
-<tr>
-<td>9/10</td>
-<td>SDA/SCL</td>
-<td>MBDATA/MBCLK</td>
-<td>SMBus接口，直接到EC</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="_4">⚡ 适配器插入完整时序 (基于本电路)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>时间点</th>
-<th>信号/事件</th>
-<th>说明</th>
-<th>本电路实际时序</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T0</td>
-<td>适配器物理插入</td>
-<td>ACIN电压开始上升</td>
-<td>-</td>
-</tr>
-<tr>
-<td>T1</td>
-<td><strong>DCIN &gt; 8V</strong></td>
-<td>芯片UVLO释放，内部偏置启动</td>
-<td>T0 + ~50µs</td>
-</tr>
-<tr>
-<td>T2</td>
-<td><strong>VDDP 上升到5.2V</strong></td>
-<td>✅ 功率电路就绪，栅极驱动可用</td>
-<td>T1 + ~200µs</td>
-</tr>
-<tr>
-<td>T3</td>
-<td><strong>ACIN &gt; 2.4V</strong></td>
-<td>适配器检测比较器触发</td>
-<td>适配器电压 &gt; 11.4V</td>
-</tr>
-<tr>
-<td>T4</td>
-<td><strong>外部RC去抖</strong></td>
-<td>PC18 0.1µF + PR17 49.9Ω 提供 ~100ms 去抖</td>
-<td>⚠️ ISL88731A无内置去抖，完全靠外部</td>
-</tr>
-<tr>
-<td>T5</td>
-<td><strong>ACOK 拉低</strong></td>
-<td>通知EC适配器存在</td>
-<td>T3 + ~100ms</td>
-</tr>
-<tr>
-<td>T6</td>
-<td><strong>EC SMBus 配置</strong></td>
-<td>EC写入 ChargeVoltage/ChargeCurrent/InputCurrent</td>
-<td>ACOK有效后 ~10ms</td>
-</tr>
-<tr>
-<td>T7</td>
-<td><strong>Buck启动</strong></td>
-<td>上下管开始开关</td>
-<td>寄存器配置完成后</td>
-</tr>
-<tr>
-<td>T8</td>
-<td><strong>软启动完成</strong></td>
-<td>充电电流从128mA逐步上升到设定值</td>
-<td>128mA / 400µs 步进，8A需要 ~25ms</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>💡 本电路最重要的特点：所有去抖100%靠外部RC，ISL88731A本身完全没有任何去抖逻辑。如果PC18掉了，适配器插拔时ACOK会疯狂跳变。</p>
-</blockquote>
-<hr />
-<h2 id="_5">⚡ 适配器拔出完整时序<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>时间点</th>
-<th>信号/事件</th>
-<th>说明</th>
-<th>本电路实际时序</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T0</td>
-<td>适配器物理拔出</td>
-<td>ACIN电压开始下降</td>
-<td>-</td>
-</tr>
-<tr>
-<td>T1</td>
-<td><strong>ACIN &lt; 2.4V</strong></td>
-<td>低于检测阈值</td>
-<td>适配器电压 &lt; 11.4V</td>
-</tr>
-<tr>
-<td>T2</td>
-<td><strong>ACOK 立即拉高</strong></td>
-<td>❗ 零延迟，无任何去抖</td>
-<td>&lt; 5µs</td>
-</tr>
-<tr>
-<td>T3</td>
-<td><strong>EC收到中断</strong></td>
-<td>立即知道适配器拔掉了</td>
-<td>T2 + &lt;1µs</td>
-</tr>
-<tr>
-<td>T4</td>
-<td><strong>VDDP 关断</strong></td>
-<td>所有栅极驱动掉电</td>
-<td>T2 + ~10µs</td>
-</tr>
-<tr>
-<td>T5</td>
-<td><strong>Buck完全停止</strong></td>
-<td>所有开关动作停止</td>
-<td>立即</td>
-</tr>
-<tr>
-<td>T6</td>
-<td><strong>外部电源切换</strong></td>
-<td>外部电路把系统切换到电池供电</td>
-<td>取决于外部设计，典型 100µs ~ 1ms</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>💡 ISL88731A是所有充电芯片里拔出响应最快的，ACOK几乎是零延迟。但代价是插入的时候必须有足够大的外部去抖，否则会有严重的毛刺。</p>
-</blockquote>
-<hr />
-<h2 id="_6">🎯 本电路的特殊设计细节<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p><strong>PR37 2.7Ω 自举电阻</strong></p>
+<h2 id="_4">关键信号<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="vccst-cpu-standby">VCCST (CPU Standby)<a class="headerlink" href="#vccst-cpu-standby" title="Permanent link">&para;</a></h3>
 <ul>
-<li>绝大多数参考设计这里是0Ω</li>
-<li>这个设计特意加了电阻放慢上管开关速度，减少公共点电压尖峰</li>
+<li><strong>电压</strong>：1.05V（典型）</li>
+<li><strong>供电对象</strong>：PCH 待机域 — RTC、ME Firmware、SPI Flash</li>
+<li><strong>特征</strong>：S5 状态下仍保持 → 说明 AC 适配器正常 → 隔离电路正常 → 待机 LDO 正常</li>
+<li><strong>无 VCCST</strong>：EC 无法读取 BIOS → 无法触发上电</li>
 </ul>
-</li>
-<li>
-<p><strong>PR17 49.9Ω + PC18 0.1µF 去抖</strong></p>
+<h3 id="vccprim-primary-standby">VCCPRIM (Primary Standby)<a class="headerlink" href="#vccprim-primary-standby" title="Permanent link">&para;</a></h3>
 <ul>
-<li>这是ISL88731A设计的标准套路</li>
-<li>没有这个，ACOK会在适配器插入时跳变几千次</li>
+<li><strong>电压</strong>：1.0V ~ 1.05V</li>
+<li><strong>供电对象</strong>：PCH Primary Well</li>
+<li><strong>与 VCCST 关系</strong>：VCCST 先有 → PCH 内部 LDO 再产生 VCCPRIM（部分平台）</li>
+<li><strong>无 VCCPRIM</strong>：PCH 核心逻辑不上电 → 开机时序停在 PCH 待机阶段</li>
 </ul>
-</li>
-<li>
-<p><strong>下管AO4712 比 上管AO4496 规格低</strong></p>
+<h3 id="vddq_stby">VDDQ_STBY<a class="headerlink" href="#vddq_stby" title="Permanent link">&para;</a></h3>
 <ul>
-<li>这不是偷工减料，这是正确的设计</li>
-<li>下管导通时间是上管的4~5倍，但是耐压要求低很多</li>
+<li><strong>电压</strong>：1.2V</li>
+<li><strong>供电对象</strong>：DDR PHY 待机逻辑（非 DRAM 颗粒本身）</li>
+<li><strong>仅在 S3 有效</strong>：S5 状态下通常关断，由 SLP_S4/SLP_S5 控制</li>
 </ul>
-</li>
-<li>
-<p><strong>VDD SMB 单独上拉到3VPCU</strong></p>
+<h3 id="vccio_stby">VCCIO_STBY<a class="headerlink" href="#vccio_stby" title="Permanent link">&para;</a></h3>
 <ul>
-<li>数字部分和模拟部分完全隔离</li>
-<li>避免功率噪声耦合到SMBus</li>
+<li><strong>电压</strong>：1.0V</li>
+<li><strong>供电对象</strong>：PCH I/O 待机逻辑</li>
+<li><strong>与 VCCIO 主供电区别</strong>：主 VCCIO 在 S0 才上电，STBY 版本在 S3 即有效</li>
 </ul>
-</li>
-</ol>
 <hr />
-<h2 id="_7">🐛 这个电路最常见的故障<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_5">开机逻辑中的角色<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>S5 状态：
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  VCCST ✓ → VCCPRIM ✓ → PCH 待机域就绪
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    → 等待 EC 发送 RSMRST#
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    → PCH 返回 SUS_PWR_ACK
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    → 释放 SLP_S5# → 释放 SLP_S4#
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    → 进入 S3
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    → 释放 SLP_S3#
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    → 进入 S0
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    → VCCIO(主) / VCCSA / VCore 等依次上电
+</code></pre></div>
+<hr />
+<h2 id="_6">常见故障排查<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>故障现象</th>
-<th>90%概率的原因</th>
+<th>现象</th>
+<th>可能原因</th>
+<th>检查点</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>插适配器ACOK狂跳，充电时断时续</td>
-<td>PC18 0.1µF 电容失效</td>
+<td>插电无反应、无待机电流</td>
+<td>待机 3.3V/5V 无输出</td>
+<td>隔离电路是否导通？TPS51125 LDO 是否起振？</td>
 </tr>
 <tr>
-<td>适配器19V正常，完全不充电</td>
-<td>VDDP LDO坏了，输出只有2V</td>
+<td>有 3V/5V 待机但不开机</td>
+<td>VCCST 或 VCCPRIM 缺失</td>
+<td>测 VCCST=1.05V？VCCPRIM=1.05V？</td>
 </tr>
 <tr>
-<td>插入适配器大短路烧保险</td>
-<td>下管PQ3 D-S击穿</td>
+<td>RSMRST# 不释放</td>
+<td>VCCST 正常但 PCH 不应答</td>
+<td>查 PCH 晶振、SPI Flash 通信</td>
 </tr>
 <tr>
-<td>充电电流只有1A左右，发热巨大</td>
-<td>下管G-S击穿，只能二极管续流</td>
-</tr>
-<tr>
-<td>公共点有2V以上大纹波</td>
-<td>PC51/PC47/PC145 输入陶瓷电容失效</td>
+<td>上电瞬间掉电</td>
+<td>SLP_S3 释放后某路供电异常</td>
+<td>按上电时序逐路测电压</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="bq">📊 与BQ系列的时序对比<a class="headerlink" href="#bq" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>本电路 ISL88731A</th>
-<th>BQ24727</th>
-<th>BQ24780S</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>插入总延迟</td>
-<td>~125ms</td>
-<td>~10ms</td>
-<td>~170ms</td>
-</tr>
-<tr>
-<td>拔出响应</td>
-<td>&lt;10µs</td>
-<td>&lt;10µs</td>
-<td>&lt;10µs</td>
-</tr>
-<tr>
-<td>内置去抖</td>
-<td>❌ 完全没有</td>
-<td>✅ 2ms</td>
-<td>✅ 150ms</td>
-</tr>
-<tr>
-<td>无缝切换</td>
-<td>❌ 不可能</td>
-<td>❌ 需要外部电路</td>
-<td>✅ &lt;20µs 内置</td>
-</tr>
-<tr>
-<td>软启动时间</td>
-<td>~25ms @ 8A</td>
-<td>~10ms @ 8A</td>
-<td>~10ms @ 8A</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<blockquote>
-<p>✅ 这个设计的哲学非常明确：把所有智能和容错都交给EC和外部电路，芯片本身做的越少，就越可靠。这也是为什么ISL88731A虽然老，但是直到今天还有大量人在用的原因。</p>
-</blockquote>
+<h2 id="_7">待补充<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 各代际 PCH（6th ~ 14th Gen）VCCST/VCCPRIM 实际电压参考表</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 典型待机电源控制器（TPS51125/RT8206）LDO 输出波形图</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> EC 与 PCH 的 RSMRST# → SUS_PWR_ACK 时序波形</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 待机功耗实测（S5 正常 &lt; 0.01W）</li>
+</ul>
 
 
 
