@@ -64,6 +64,7 @@ nav:
     - VCCIO — I/O 供电: vccio.md
     - VCCGT — 核显供电: vccgt.md
   - 待机与开机时序:
+    - 待机供电轨 (VCCST/VCCPRIM): standby-power-rails.md
     - EC 待机架构: ec-standby.md
     - 上电时序与开机流程: power-on-sequence.md
   - 内存供电:
