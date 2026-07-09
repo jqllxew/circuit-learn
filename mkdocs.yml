@@ -42,6 +42,7 @@ markdown_extensions:
 
 extra_javascript:
   - assets/pw.js
+  - assets/lightbox.js
 
 nav:
   - 首页: index.md
