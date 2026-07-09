@@ -69,3 +69,4 @@ nav:
     - 上电时序与开机流程: power-on-sequence.md
   - 内存供电:
     - DDR VDDQ/VTTREF/VTT: ddr-power-signals.md
+  - 名词扫盲: embedded-glossary.md
