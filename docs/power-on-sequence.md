@@ -8,7 +8,7 @@
 
 主板上各电压产生的先后顺序，按 ACPI 电源状态划分：
 
-![主板上电时序图](assets/power-on-sequence.jpg)
+![主板上电时序图](https://bytep102.tos-ap-southeast-1.bytepluses.com/circuit-learn/power-on-sequence.jpg)
 
 ### 硬启动阶段（故障占比 60%~70%）
 
@@ -50,7 +50,7 @@ POST 开机自检 → 自检 CPU → 自检内存 → 自检 PCH → 自检显�
 
 以下是以华硕 G531GW 为例的 PCH 待机开机条件分析，梳理了 PCH 内部各电源域与 EC 的信号交互：
 
-![PCH 待机条件分析](assets/pch-standby-g531gw.jpg)
+![PCH 待机条件分析](https://bytep102.tos-ap-southeast-1.bytepluses.com/circuit-learn/pch-standby-g531gw.jpg)
 
 ### PCH 内部电源域
 

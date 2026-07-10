@@ -12,7 +12,7 @@
 > **芯片定位：** Richtek 外置双 N-MOSFET 同步 Buck 控制器，COT（恒定导通时间）控制架构。
 > **输入：** 4.5V ~ 26V | **输出：** 1.05V（可通过分压电阻调整）
 
-![RT8209A/B/C 同步 Buck 应用电路](assets/rt8209-buck.jpg)
+![RT8209A/B/C 同步 Buck 应用电路](https://bytep102.tos-ap-southeast-1.bytepluses.com/circuit-learn/rt8209-buck.jpg)
 
 ### 引脚功能速查
 
@@ -80,7 +80,7 @@ VOUT = Vref × (1 + R8/R9)
 > **芯片定位：** Richtek DDR 内存专用供电芯片，内置一路同步 Buck（VDDQ）+ 一路跟随型 LDO（VTT），
 > 同时输出 VTTREF 基准电压。单片搞定 DDR2/DDR3/DDR4 全部电源轨。
 
-![RT8231A/B DDR 内存供电应用电路](assets/rt8231-ddr-power.jpg)
+![RT8231A/B DDR 内存供电应用电路](https://bytep102.tos-ap-southeast-1.bytepluses.com/circuit-learn/rt8231-ddr-power.jpg)
 
 ### 引脚功能速查
 

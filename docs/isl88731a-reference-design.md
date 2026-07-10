@@ -3,13 +3,13 @@
 > 基于真实笔记本电路原理图的完整分析
 > 对应芯片: ISL88731A TQFN-28
 
-![ISL88731A 典型应用电路](assets/isl88731a-schematic.png)
+![ISL88731A 典型应用电路](https://bytep102.tos-ap-southeast-1.bytepluses.com/circuit-learn/isl88731a-schematic.png)
 
 ---
 
 ## 🔍 内部逻辑框图验证
 
-![ISL88731A 内部功能框图](assets/isl88731a-block-diagram.png)
+![ISL88731A 内部功能框图](https://bytep102.tos-ap-southeast-1.bytepluses.com/circuit-learn/isl88731a-block-diagram.png)
 
 > ✅ 我们之前所有的分析，100%和这个官方框图完全对应。几个最关键的验证点：
 

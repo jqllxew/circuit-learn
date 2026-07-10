@@ -1,6 +1,6 @@
 # ISL88731A 适配器插拔时序说明
 
-![ISL88731A 典型应用电路](assets/isl88731a-schematic.png)
+![ISL88731A 典型应用电路](https://bytep102.tos-ap-southeast-1.bytepluses.com/circuit-learn/isl88731a-schematic.png)
 
 ---
 
@@ -8,7 +8,7 @@
 
 所有我们之前说的时序，都可以在这个官方内部框图里找到对应：
 
-![ISL88731A 内部功能框图](assets/isl88731a-block-diagram.png)
+![ISL88731A 内部功能框图](https://bytep102.tos-ap-southeast-1.bytepluses.com/circuit-learn/isl88731a-block-diagram.png)
 
 你可以很清楚地看到：
 - ACOK就是一个干净的比较器，后面直接接开漏管，没有任何去抖，没有任何延时，所以拔出的时候才会零延迟

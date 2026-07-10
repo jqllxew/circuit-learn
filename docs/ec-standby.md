@@ -6,7 +6,7 @@
 
 ## EC 整体架构
 
-![EC 待机架构框图](assets/ec-standby-architecture.png)
+![EC 待机架构框图](https://bytep102.tos-ap-southeast-1.bytepluses.com/circuit-learn/ec-standby-architecture.png)
 
 EC (Embedded Controller) 是笔记本主板上真正的电源管理核心，在按下开机键之前它就已经在工作了。
 
@@ -104,7 +104,7 @@ EC 有三个完全独立的电源域：
 
 以下是以华硕 FX505GD（EC: IT8987E）为例的完整 EC 待机触发逻辑分析，由维修从业者手绘整理：
 
-![FX505GD EC 待机触发逻辑](assets/ec-standby-fx505gd.jpg)
+![FX505GD EC 待机触发逻辑](https://bytep102.tos-ap-southeast-1.bytepluses.com/circuit-learn/ec-standby-fx505gd.jpg)
 
 ### 图上关键信号解析
 
