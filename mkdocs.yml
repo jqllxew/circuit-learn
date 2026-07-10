@@ -58,6 +58,7 @@ nav:
   - PWM 供电电路:
     - TPS51125 系统供电控制器: tps51125.md
     - TPS51123 系统供电控制器: tps51123.md
+    - Buck 电路实例: buck-examples.md
   - CPU 平台供电:
     - VCore — CPU 核心供电: vcore.md
     - VCCSA — 系统代理供电: vccsa.md
