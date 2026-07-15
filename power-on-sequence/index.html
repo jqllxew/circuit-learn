@@ -687,6 +687,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../ltc3735/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LTC3735 双相 CPU 供电控制器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../buck-examples/" class="md-nav__link">
         
   
@@ -1087,6 +1115,34 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        详细信号级时序图
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="详细信号级时序图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16 步详细信号流程
+      
+    </span>
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#2030" class="md-nav__link">
     <span class="md-ellipsis">
@@ -1099,7 +1155,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         系统阶段（功能性故障）
@@ -1149,7 +1205,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         上电流程（图上标注的步骤）
@@ -1296,6 +1352,33 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    流水线踩坑笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1345,6 +1428,34 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        详细信号级时序图
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="详细信号级时序图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16 步详细信号流程
+      
+    </span>
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#2030" class="md-nav__link">
     <span class="md-ellipsis">
@@ -1357,7 +1468,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         系统阶段（功能性故障）
@@ -1407,7 +1518,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         上电流程（图上标注的步骤）
@@ -1484,12 +1595,112 @@
 <blockquote>
 <p>💡 硬启动收尾：时钟电路和复位电路是最后的关卡，这两步过了才算硬启动完成。</p>
 </blockquote>
+<hr />
+<h2 id="_3">详细信号级时序图<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>这是一张标注了 16 个关键信号步骤的详细上电时序流程图：</p>
+<p><img alt="详细信号级上电时序" src="../assets/laptop-power-on-sequence.png" /></p>
+<blockquote>
+<p>🎯 这张图精确到具体信号的交互顺序，是笔记本电脑硬件开机流程最核心的知识。理解这个时序图，就理解了 80% 的笔记本硬件工作原理。</p>
+</blockquote>
+<h3 id="16">16 步详细信号流程<a class="headerlink" href="#16" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>信号/事件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td><strong>RTC 就绪</strong></td>
+<td>插上适配器或电池后，RTC 实时时钟电源首先工作</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>PWRBTN# 按下</strong></td>
+<td>用户按下电源键</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>EC 响应</strong></td>
+<td>EC 检测到开机信号，通知 PCH</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><strong>S4_ON 输出</strong></td>
+<td>EC 开启 S4 深度睡眠电源轨</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td><strong>S4_PG</strong></td>
+<td>S4 电源输出稳定</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td><strong>SLP_S4# 释放</strong></td>
+<td>PCH 解除深度睡眠</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td><strong>S3_EN 输出</strong></td>
+<td>EC 开启 S3 待机电源轨</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td><strong>S3_PG</strong></td>
+<td>S3 电源输出稳定</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td><strong>ALLPWRPG</strong></td>
+<td>所有次要电源就绪</td>
+</tr>
+<tr>
+<td><strong>10</strong></td>
+<td><strong>VR_ON / S0_EN</strong></td>
+<td>EC 开启 CPU 核心电源</td>
+</tr>
+<tr>
+<td><strong>11</strong></td>
+<td><strong>VCORE 输出</strong></td>
+<td>CPU 核心电源稳定</td>
+</tr>
+<tr>
+<td><strong>12</strong></td>
+<td><strong>SVID 通信</strong></td>
+<td>CPU 与 VCORE 芯片通信设置电压</td>
+</tr>
+<tr>
+<td><strong>13</strong></td>
+<td><strong>PCH_PWROK</strong></td>
+<td>PCH 确认所有电源就绪</td>
+</tr>
+<tr>
+<td><strong>14</strong></td>
+<td><strong>CLK_EN</strong></td>
+<td>时钟芯片开始输出所有时钟</td>
+</tr>
+<tr>
+<td><strong>15</strong></td>
+<td><strong>所有时钟稳定</strong></td>
+<td>PCI_CLK、CPU_CLK 正常输出</td>
+</tr>
+<tr>
+<td><strong>16</strong></td>
+<td><strong>CPU_RESET# 释放</strong></td>
+<td>✅ <strong>硬件启动 100% 完成</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
 <h3 id="2030">软启动阶段（故障占比 20%~30%）<a class="headerlink" href="#2030" title="Permanent link">&para;</a></h3>
 <p>供电、时钟、复位都正常后，主板开始硬件自检：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>POST 开机自检 → 自检 CPU → 自检内存 → 自检 PCH → 自检显卡
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>→ 自检 EC → 选择显示通道 → 读 BIOS → 自检外设（硬盘/光驱/USB/键盘等）
 </code></pre></div>
-<h3 id="_3">系统阶段（功能性故障）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4">系统阶段（功能性故障）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>硬件自检全部通过后进入系统加载：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>加载系统 → 加载驱动 → 加载软件 → 用户正常使用
 </code></pre></div>
@@ -1567,7 +1778,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="_4">上电流程（图上标注的步骤）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">上电流程（图上标注的步骤）<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <ol>
 <li>CMOS 电池供电 → RTC 电路工作</li>
 <li>插入适配器/电池 → 待机 3V/5V 产生 → EC/PCH 待机模块供电</li>

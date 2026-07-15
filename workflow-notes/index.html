@@ -11,10 +11,8 @@
       
       
       
-        <link rel="prev" href="../standby-power-rails/">
+        <link rel="prev" href="../embedded-glossary/">
       
-      
-        <link rel="next" href="../power-on-sequence/">
       
       
         
@@ -25,7 +23,7 @@
     
     
       
-        <title>EC 待机架构 - 电路学习笔记</title>
+        <title>流水线踩坑笔记 - 电路学习笔记</title>
       
     
     
@@ -76,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ec" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -112,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              EC 待机架构
+              流水线踩坑笔记
             
           </span>
         </div>
@@ -920,8 +918,6 @@
       
   
   
-    
-  
   
   
     
@@ -934,11 +930,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -959,7 +957,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1002,37 +1000,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    EC 待机架构
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../ec-standby/" class="md-nav__link">
         
   
   
@@ -1048,209 +1019,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ec_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        EC 整体架构
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        待机供电
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        输入信号
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="输入信号">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔄 复位信号
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📑 适配器检测
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⌨️ 用户输入
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔋 电池接口
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        外围设备
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="外围设备">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#32768khz" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🕒 32.768KHz 晶振
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ec-rom" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💾 EC ROM
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📡 PCH 通讯
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        待机状态
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见故障
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fx505gd-ec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        实战案例：FX505GD EC 待机触发分析
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="实战案例：FX505GD EC 待机触发分析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        图上关键信号解析
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1411,10 +1179,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../workflow-notes/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    流水线踩坑笔记
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1430,6 +1225,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ddworkspace-vs-dworkspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 路径双写坑（/d/d/workspace vs /d/workspace）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 叙事完成感——脑子里写完了，工具没调用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 写-推之间的上下文切换成本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 图片路径事后替换
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 代理推大文件超时
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流水线标准姿势（当前最优）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1461,10 +1342,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ec_1" class="md-nav__link">
+  <a href="#1-ddworkspace-vs-dworkspace" class="md-nav__link">
     <span class="md-ellipsis">
       
-        EC 整体架构
+        1. 路径双写坑（/d/d/workspace vs /d/workspace）
       
     </span>
   </a>
@@ -1472,10 +1353,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        待机供电
+        2. 叙事完成感——脑子里写完了，工具没调用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 写-推之间的上下文切换成本
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 图片路径事后替换
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 代理推大文件超时
       
     </span>
   </a>
@@ -1486,160 +1400,10 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        输入信号
+        流水线标准姿势（当前最优）
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="输入信号">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔄 复位信号
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📑 适配器检测
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⌨️ 用户输入
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔋 电池接口
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        外围设备
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="外围设备">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#32768khz" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🕒 32.768KHz 晶振
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ec-rom" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💾 EC ROM
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📡 PCH 通讯
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        待机状态
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        常见故障
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fx505gd-ec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        实战案例：FX505GD EC 待机触发分析
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="实战案例：FX505GD EC 待机触发分析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        图上关键信号解析
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1660,186 +1424,56 @@
 
 
 
-<h1 id="ec">EC 待机架构<a class="headerlink" href="#ec" title="Permanent link">&para;</a></h1>
-<p>笔记本电脑的待机电源和开机时序核心，所有开机流程的起点。</p>
-<hr />
-<h2 id="ec_1">EC 整体架构<a class="headerlink" href="#ec_1" title="Permanent link">&para;</a></h2>
-<p><img alt="EC 待机架构框图" src="https://bytep102.tos-ap-southeast-1.bytepluses.com/circuit-learn/ec-standby-architecture.png" /></p>
-<p>EC (Embedded Controller) 是笔记本主板上真正的电源管理核心，在按下开机键之前它就已经在工作了。</p>
-<hr />
-<h2 id="_1">待机供电<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>当主板插上电池或者适配器的那一刻起，EC 就会得到以下几组待机供电：</p>
-<table>
-<thead>
-<tr>
-<th>电压</th>
-<th>名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>VCC</strong></td>
-<td>核心供电</td>
-<td>EC 内核工作电压，通常 1.8V</td>
-</tr>
-<tr>
-<td><strong>VDD</strong></td>
-<td>IO 供电</td>
-<td>EC 引脚输入输出电压，通常 3.3V</td>
-</tr>
-<tr>
-<td><strong>VPP</strong></td>
-<td>编程电压</td>
-<td>固件烧录电压</td>
-</tr>
-<tr>
-<td><strong>3VALW</strong></td>
-<td>总是有效 3.3V</td>
-<td>真正的待机电压，只要有电池/适配器就存在</td>
-</tr>
-<tr>
-<td><strong>3VA</strong></td>
-<td>待机 3.3V</td>
-<td>唤醒后才会开启的待机电压</td>
-</tr>
-<tr>
-<td><strong>3A</strong></td>
-<td>运行 3.3V</td>
-<td>完全开机后才会开启</td>
-</tr>
-</tbody>
-</table>
+<h1 id="_1">姐妹流水线踩坑笔记<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>💡 很多人搞不清 3VALW、3VA、3A 的区别：
-- ✅ 插电池就有：3VALW
-- ✅ 按开机键后有：3VA
-- ✅ 亮屏后才有：3A</p>
+<p>不写大流程文档。就记"踩过的坑 + 为什么这么改"。
+新任务上手直接看，不用口头传。</p>
 </blockquote>
 <hr />
-<h2 id="_2">输入信号<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="_3">🔄 复位信号<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>RST / RESET / POR</strong>：上电复位信号</li>
-<li>所有供电稳定后，EC 才会释放自己的复位</li>
-<li>复位信号不正常是最常见的不开机故障</li>
-</ul>
-<h3 id="_4">📑 适配器检测<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>ACOK</strong>：适配器插入信号，来自充电芯片</li>
-<li><strong>ADP_ID</strong>：适配器功率检测，通过电阻分压识别 45W/65W/90W/135W 等不同功率的适配器</li>
-<li>EC 会根据适配器功率动态调整充电电流和系统性能</li>
-</ul>
-<h3 id="_5">⌨️ 用户输入<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>PWRBTN# / PWR_SW</strong>：开机键信号，低有效</li>
-<li><strong>LID#</strong>：合盖检测信号，休眠/唤醒控制</li>
-</ul>
-<h3 id="_6">🔋 电池接口<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>BAT_SCL / BAT_SDA</strong>：SMBus 总线，直接和电池通讯</li>
-<li>EC 直接读取电池电压、温度、剩余容量、循环次数等所有信息</li>
-</ul>
+<h2 id="1-ddworkspace-vs-dworkspace">1. 路径双写坑（/d/d/workspace vs /d/workspace）<a class="headerlink" href="#1-ddworkspace-vs-dworkspace" title="Permanent link">&para;</a></h2>
+<p><strong>症状：</strong> write_file 路径写 <code>/d/workspace/...</code> 后工具显示成功，但文件实际落在 <code>/d/d/workspace/...</code>，git 仓库里看不到。</p>
+<p><strong>根因：</strong> Hermes 的路径解析把 <code>/d/</code> 当相对路径拼接到了当前工作目录上。</p>
+<p><strong>不会踩的人：</strong> 用 <code>D:/workspace/...</code> 绝对路径。</p>
+<p><strong>教训：</strong> 写仓库文件一律用 <code>D:/workspace/circuit-learn/...</code>，别用 <code>/d/</code> 前缀。写完立刻 <code>git status</code> 验证。</p>
 <hr />
-<h2 id="_7">外围设备<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<h3 id="32768khz">🕒 32.768KHz 晶振<a class="headerlink" href="#32768khz" title="Permanent link">&para;</a></h3>
-<p>EC 的心跳，没有它 EC 绝对不会工作：
-- 这是 EC 唯一的时钟源
-- 待机时整个主板只有这个晶振在震动
-- 晶振虚焊是排名第一的 EC 故障</p>
-<h3 id="ec-rom">💾 EC ROM<a class="headerlink" href="#ec-rom" title="Permanent link">&para;</a></h3>
+<h2 id="2">2. 叙事完成感——脑子里写完了，工具没调用<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p><strong>症状：</strong> 把改动内容在脑子里过了一遍、用文字描述了一遍，然后就以为"做完了"。实际 write_file 或 patch 根本没执行。</p>
+<p><strong>不会踩的人：</strong> 写完立刻读文件验证行数/内容。commit 前 git diff。</p>
+<p><strong>案例：</strong>
+- 2号声称"改好了 lightbox.js"——实际没改
+- 3号声称"commit b0c8a8a"——实际没落盘</p>
+<hr />
+<h2 id="3-">3. 写-推之间的上下文切换成本<a class="headerlink" href="#3-" title="Permanent link">&para;</a></h2>
+<p><strong>症状：</strong> 写完 → commit → 构建通过 → 再叫4妹推。4妹收到消息后才开始切上下文、热 SSH tunnel、git fetch。</p>
+<p><strong>优化：</strong> 3妹动笔前预先通知4妹——"大概5分钟后来推，先别跑远"。4妹提前 git fetch + 热 tunnel，commit 下一秒就能 push。</p>
+<p><strong>量化：</strong> 省掉每次 30-60 秒的上下文切换。</p>
+<hr />
+<h2 id="4">4. 图片路径事后替换<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p><strong>症状：</strong> 先写 <code>assets/xxx.jpg</code>，等 TOS 上传完再批量 replace 成 <code>https://bytep102...</code>。</p>
+<p><strong>优化：</strong> 上传 TOS 的瞬间就出 URL，直接把 URL 给写文档的人——markdown 里从第一行就用 TOS URL，不需要事后替换。</p>
+<p><strong>什么时候保留 assets/ 本地引用：</strong> 不用 TOS 的项目、纯本地 mkdocs serve 预览。</p>
+<hr />
+<h2 id="5">5. 代理推大文件超时<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p><strong>症状：</strong> 2号 git push over HTTPS proxy 大文件（&gt;100KB 图片）必然超时。curl 秒通 GitHub，git push 就是不通。</p>
+<p><strong>当前方案：</strong> 4号 SSH+SOCKS5 推。小 commit（纯文本）2号可以自己推，含图片的交给4号。</p>
+<p><strong>备用方案：</strong> 好运宝宝本地 git pull &amp;&amp; git push，绕过代理。</p>
+<hr />
+<h2 id="_2">流水线标准姿势（当前最优）<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>好运宝宝发图/需求
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  ↓
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>2号分活（谁写什么、给什么资源）
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  ↓                ↓
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>3号动笔          同时通知4号预热 SSH tunnel
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  ↓
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>commit → 4号收到信号立刻 push + gh-deploy
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  ↓
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>站点上线
+</code></pre></div>
 <ul>
-<li>通常是 128KB 或者 256KB 的 SPI Flash</li>
-<li>保存 EC 固件程序、开机 LOGO、键盘映射、风扇策略</li>
-<li>很多笔记本的 EC ROM 和 BIOS ROM 是分开的</li>
+<li>图片走 TOS：上传时直接出 URL → 写文档的人直接用</li>
+<li>路径用 <code>D:/workspace/</code> 绝对路径</li>
+<li>写完立刻 git status + 读文件验证</li>
 </ul>
-<h3 id="pch">📡 PCH 通讯<a class="headerlink" href="#pch" title="Permanent link">&para;</a></h3>
-<ul>
-<li>现代主板使用 ESPI 总线连接 EC 和 PCH</li>
-<li>老主板使用 LPC 总线</li>
-<li>所有的开机、关机、休眠、唤醒命令都通过这条总线传递</li>
-</ul>
-<hr />
-<h2 id="_8">待机状态<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>EC 有三个完全独立的电源域：</p>
-<table>
-<thead>
-<tr>
-<th>状态</th>
-<th>活动模块</th>
-<th>电流</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>深度待机</strong></td>
-<td>只有 32K 晶振和复位电路在工作</td>
-<td>~300µA</td>
-</tr>
-<tr>
-<td><strong>待机</strong></td>
-<td>EC 内核运行，扫描键盘，等待开机键</td>
-<td>~5mA</td>
-</tr>
-<tr>
-<td><strong>运行</strong></td>
-<td>所有功能全开</td>
-<td>~50mA</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>💡 笔记本关机掉电快，90% 都是因为 EC 没有真正进入深度待机状态。</p>
-</blockquote>
-<hr />
-<h2 id="_9">常见故障<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>故障现象</th>
-<th>90% 概率的原因</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>插电大电流，EC 发烫</td>
-<td>EC 本身击穿损坏</td>
-</tr>
-<tr>
-<td>按开机键完全没反应</td>
-<td>32.768KHz 晶振不起振</td>
-</tr>
-<tr>
-<td>拔掉适配器就掉电</td>
-<td>电池 SMBus 通讯异常</td>
-</tr>
-<tr>
-<td>自动开机或者自动关机</td>
-<td>EC 固件损坏，需要重刷</td>
-</tr>
-<tr>
-<td>风扇狂转不降速</td>
-<td>EC 温度检测脚开路</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="fx505gd-ec">实战案例：FX505GD EC 待机触发分析<a class="headerlink" href="#fx505gd-ec" title="Permanent link">&para;</a></h2>
-<p>以下是以华硕 FX505GD（EC: IT8987E）为例的完整 EC 待机触发逻辑分析，由维修从业者手绘整理：</p>
-<p><img alt="FX505GD EC 待机触发逻辑" src="https://bytep102.tos-ap-southeast-1.bytepluses.com/circuit-learn/ec-standby-fx505gd.jpg" /></p>
-<h3 id="_10">图上关键信号解析<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p><strong>EC 工作三大前提</strong>（缺一不可）：
-1. <strong>供电</strong>：+3VACC 待机供电 + 10μF 滤波电容
-2. <strong>时钟</strong>：32.768KHz 晶振 — EC 的心跳
-3. <strong>复位</strong>：EC_RST#（14脚），低电平有效</p>
-<p><strong>开机触发链路</strong>：
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>LID_SW(17脚) 合盖检测 → PWR_SW(107脚) 开机键 → EC 检测到按键
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>→ RSMRST# 通知 PCH 待机就绪 → PM_PWRBTN#(87脚) 请求 PCH 开机
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>→ PCH 回复 PM_SUSB# / PM_SUSC# → EC 开启后续供电
-</code></pre></div></p>
-<p><strong>维修优先级提示</strong>：
-- AC_IN_OC、SMB0_CLK、SMB0_DAT 这三个信号异常 <strong>一般不导致不触发</strong>，排查时可跳
-- BIOS + EC ROM 连接到 EC 的 4/2/5/6 脚</p>
 
 
 
