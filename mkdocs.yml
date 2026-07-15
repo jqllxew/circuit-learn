@@ -12,8 +12,6 @@ theme:
     - content.code.copy
     - content.code.annotate
     - toc.follow
-  mermaid:
-    enabled: true
   palette:
     - scheme: default
       primary: indigo
@@ -32,11 +30,7 @@ markdown_extensions:
   - admonition
   - pymdownx.highlight:
       anchor_linenums: true
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.details
   - pymdownx.tasklist:
