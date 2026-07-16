@@ -107,6 +107,9 @@
 |--------|------|----------|----------------|
 | **VCC / VIN** | 通用输入 | 依芯片 | 上一级 |
 | **20V 公共点** | 整板 Buck 上管 Drain 母线 | 19~20V | 适配器 / 电池升压 |
+| **+3VAWL / +5VAWL** (V3A / V5A) | Always-on 常开路，EC/RTC/wake 逻辑 | 3.3V / 5V | [3/5V 系统供电](system-power.md) 控制器内建 LDO |
+| **+3VSUS / +5VSUS** (+3VSB) | Suspend 待机路，S3 保持 S5 关 | 3.3V / 5V | Buck 输出经 SLP_S3# 门控 FET |
+| **+3VS0 / +5VS0** | Runtime 运行路，仅 S0 | 3.3V / 5V | [3/5V 系统供电](system-power.md) 主 Buck |
 | **VDDQ** | 内存主供电 | 1.5V (DDR3) / 1.2V (DDR4) / 1.1V (DDR5) | [内存供电](memory-power.md) |
 | **VTT** | 内存终结电压 | VDDQ/2 | [内存供电](memory-power.md) |
 | **VTTREF** | 内存参考电压 | VDDQ/2 | [内存供电](memory-power.md) 分压 |
