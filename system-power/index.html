@@ -485,6 +485,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#35v_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三层 3/5V 电源
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -499,7 +510,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        主要信号（按常见程度）
+        主要信号（按功能分组）
       
     </span>
   </a>
@@ -816,6 +827,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#35v_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三层 3/5V 电源
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -830,7 +852,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        主要信号（按常见程度）
+        主要信号（按功能分组）
       
     </span>
   </a>
@@ -866,7 +888,41 @@
 
 
 <h1 id="35v">3/5V 系统供电<a class="headerlink" href="#35v" title="Permanent link">&para;</a></h1>
-<p>主板从 20V 公共点降压出 +3.3V / +5V 两路系统级电源，供 EC、PCH 待机域、USB 待机、内存 SPD 使用。典型是<strong>双通道同步 Buck 控制器</strong>。</p>
+<p>主板从 20V 公共点降压出 +3.3V / +5V 两路系统级电源，供 EC、PCH 待机域、USB 待机、内存 SPD 使用。典型是<strong>双通道同步 Buck 控制器 + 内建双 LDO</strong>。</p>
+<h2 id="35v_1">三层 3/5V 电源<a class="headerlink" href="#35v_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>常见名</th>
+<th>来源</th>
+<th>存活范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Always-on 常开</td>
+<td><strong>+3VAWL / +5VAWL</strong>（V3A / V5A / +3V_ALW）</td>
+<td>控制器内建 LDO 从 VIN 直接线性稳压</td>
+<td>只要 VIN 有电就有</td>
+</tr>
+<tr>
+<td>Suspend 待机</td>
+<td><strong>+3VSUS / +5VSUS</strong>（+3VSB / +5VSB）</td>
+<td>Buck 输出经 FET 门控（SLP_S3# 控制）</td>
+<td>S3 保持，S5 关</td>
+</tr>
+<tr>
+<td>Runtime 运行</td>
+<td><strong>+3VS0 / +5VS0</strong></td>
+<td>Buck 主输出，SLP_S3# 释放才有</td>
+<td>仅 S0</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>常开 LDO 是上电起点：</strong> 适配器一插，VIN 就位，LDO 立刻输出 +3VAWL / +5VAWL，EC 才能启动、才能检测 PWRBTN#、才能拉 EN 起主 Buck。主 Buck 尚未起时，AWL 已在跑。</p>
+</blockquote>
 <hr />
 <h2 id="_1">经典型号<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
@@ -876,8 +932,9 @@
 <li><a href="https://www.analog.com/">MAX8734</a>（Maxim / ADI）</li>
 </ul>
 <hr />
-<h2 id="_2">主要信号（按常见程度）<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ol>
+<h2 id="_2">主要信号（按功能分组）<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><strong>Buck 主级</strong></p>
+<ul>
 <li><strong>EN / EN5 / EN3</strong> —— 通道使能（EC 拉高）</li>
 <li><strong>VIN</strong> —— 输入（20V 公共点）</li>
 <li><strong>PGOOD / VROK</strong> —— 电源好输出，级联给下一级</li>
@@ -887,7 +944,18 @@
 <li><strong>VDDP</strong> —— 内部栅极驱动级供电</li>
 <li><strong>CS</strong> —— 电流设置（外接电阻设过流阈值）</li>
 <li><strong>REF / SS</strong> —— 内部参考 / 软启动（部分控制器外露）</li>
-</ol>
+</ul>
+<p><strong>内建 LDO（常开路径）</strong></p>
+<ul>
+<li><strong>LDOIN / VBAT_IN</strong> —— LDO 输入（直连 VIN 或电池）</li>
+<li><strong>LDO5 / V5A</strong> —— 5V 常开 LDO 输出（+5VAWL 源头）</li>
+<li><strong>LDO3 / V3A</strong> —— 3.3V 常开 LDO 输出（+3VAWL 源头）</li>
+<li><strong>V5FILT</strong> —— 5V LDO 外接滤波 / 旁路电容脚</li>
+</ul>
+<p><strong>Suspend 门控</strong></p>
+<ul>
+<li><strong>SLP_S3#</strong> —— 决定 +3VSUS / +5VSUS 是否输出（PCH → EC → 门控 FET）</li>
+</ul>
 <p>详见 <a href="../signals/">信号索引</a>。</p>
 <hr />
 <h2 id="_3">工作时序<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>

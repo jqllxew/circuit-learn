@@ -1470,6 +1470,24 @@
 <td>适配器 / 电池升压</td>
 </tr>
 <tr>
+<td><strong>+3VAWL / +5VAWL</strong> (V3A / V5A)</td>
+<td>Always-on 常开路，EC/RTC/wake 逻辑</td>
+<td>3.3V / 5V</td>
+<td><a href="../system-power/">3/5V 系统供电</a> 控制器内建 LDO</td>
+</tr>
+<tr>
+<td><strong>+3VSUS / +5VSUS</strong> (+3VSB)</td>
+<td>Suspend 待机路，S3 保持 S5 关</td>
+<td>3.3V / 5V</td>
+<td>Buck 输出经 SLP_S3# 门控 FET</td>
+</tr>
+<tr>
+<td><strong>+3VS0 / +5VS0</strong></td>
+<td>Runtime 运行路，仅 S0</td>
+<td>3.3V / 5V</td>
+<td><a href="../system-power/">3/5V 系统供电</a> 主 Buck</td>
+</tr>
+<tr>
 <td><strong>VDDQ</strong></td>
 <td>内存主供电</td>
 <td>1.5V (DDR3) / 1.2V (DDR4) / 1.1V (DDR5)</td>
