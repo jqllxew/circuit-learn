@@ -77,7 +77,7 @@
 | **LGATE / LODRV** | 下管 N-MOS 栅极驱动输出 | 所有同步 Buck | 所有 Buck 控制器 |
 | **PHASE / SW** | 开关节点（上下管中点，接电感） | 所有同步 Buck | 所有 Buck 控制器 |
 | **BOOT / BTST** | 自举电容电源（浮动为上管驱动供电） | 所有同步 Buck | 所有 Buck 控制器 |
-| **REGN** | 内部 6V LDO 输出（栅极驱动用） | [隔离保护](isolation-protection.md) | BQ24780S, ISL88731A |
+| **REGN** | 内部 6V LDO 输出，从 VCC 稳压得到；同时喂 HIDRV/LODRV 驱动级 + ACDRV/BATDRV 电荷泵；**REGN 未起 = 充电 IC 全死**（外接 1µF 陶瓷电容到 PGND） | [隔离保护](isolation-protection.md) | BQ24780S, ISL88731A |
 | **ACDRV** | ACFET 电荷泵驱动（CMSRC + 6V） | [隔离保护](isolation-protection.md) | BQ24780S, ISL88731A |
 | **BATDRV** | BATFET 电荷泵驱动（BATSRC + 6V） | [隔离保护](isolation-protection.md) | BQ24780S, ISL88731A |
 | **VDDP** | 内部栅极驱动级供电 | [3/5V 系统供电](system-power.md) | RT8209 等 |
