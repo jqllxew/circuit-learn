@@ -17,13 +17,39 @@
 
 ---
 
-## 主要信号（按常见程度）
+## 主要信号（按功能分组）
 
-1. **ACOK / ACDET** —— 适配器检测
-2. **SDA / SCL** —— SMBus 通信（EC ↔ 充电 IC）
-3. **PROCHOT#** —— 过流保护，触发 CPU 降频
-4. **SRP / SRN** —— 充电电流检测（差分）
-5. **HIDRV / LODRV / PHASE** —— Buck 同步驱动
+**适配器 / 电池检测**
+
+- **ACOK** —— 适配器有效指示
+- **ACDET** —— 适配器检测电压输入（分压阈值 > 2.4V 有效）
+- **BATPRES** —— 电池存在指示
+- **TB_STAT** —— Turbo Boost / 混合升压 状态
+
+**SMBus 通信**
+
+- **SDA / SCL** —— EC ↔ 充电 IC 命令/状态
+- **ALERT# / SMBus Alert** —— 从设备主动通知 EC 故障
+- **CHRG_INHIBIT** —— 充电禁止（SMBus 寄存器位 REG0x12[0]）
+
+**电流 / 功率检测**
+
+- **SRP / SRN** —— 充电电流检测（跨检测电阻差分）
+- **ACP / ACN** —— 适配器电流检测（差分）
+- **IADP** —— 适配器电流缓冲输出（20x / 40x ACP-ACN）
+- **IDCHG** —— 电池放电电流缓冲输出（8x / 16x SRN-SRP）
+- **PMON** —— 系统总功率监测输出
+
+**保护动作**
+
+- **PROCHOT#** —— CPU 强制降频请求（充电 IC 检测到过流可触发）
+
+**同步 Buck 主级**
+
+- **HIDRV / LODRV / PHASE / BOOT** —— 上下管驱动 + 开关节点 + 自举
+- **REGN** —— 内部 6V LDO 输出（栅极驱动用）
+- **ACDRV** —— ACFET 电荷泵驱动（CMSRC + 6V）
+- **BATDRV** —— BATFET 电荷泵驱动（BATSRC + 6V）
 
 详见 [信号索引](signals.md)。
 

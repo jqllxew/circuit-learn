@@ -24,11 +24,15 @@ VCore 电流几十到上百 A，必须**多相 Buck**分担；其余单相即可
 
 ## 主要信号（按常见程度）
 
-1. **VR_ON** —— VRM 使能
-2. **SVC / SVD / ALERT#** —— SVID 三线，动态调压
-3. **VR_PWRGD / PWROK** —— VRM 电源好
-4. **PSID / BOOT_VID** —— 平台 ID / 起始电压
-5. **IMON / IOUT** —— 电流监测
+1. **VR_ON** —— VRM 使能，EC 拉高触发上电
+2. **VR_PWRGD / PWROK** —— VRM 电源好，PCH 释放 PLTRST# 的前置
+3. **SVC / SVD / ALERT#** —— SVID 三线，CPU ↔ VRM 动态调压
+4. **PSID / BOOT_VID** —— 平台 ID / 起始电压，上电前读取选参数表
+5. **IMON / IOUT** —— 输出电流监测（模拟电压 ∝ I）
+6. **PROCHOT#** —— CPU 强制降频请求（VRM / 充电 IC / EC 可触发）
+7. **PGOOD (各路)** —— VCCSA / VCCIO / VCCGT 各支路电源好
+8. **UGATE / LGATE / PHASE / BOOT** —— 多相 Buck 上下管驱动 + 开关节点 + 自举
+9. **FB / COMP** —— 反馈 + 环路补偿（每相独立）
 
 详见 [信号索引](signals.md)。
 
