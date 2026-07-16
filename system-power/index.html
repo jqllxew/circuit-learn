@@ -878,11 +878,15 @@
 <hr />
 <h2 id="_2">主要信号（按常见程度）<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>EN / EN5 / EN3</strong> —— 通道使能</li>
-<li><strong>PGOOD / VROK</strong> —— 电源好输出</li>
+<li><strong>EN / EN5 / EN3</strong> —— 通道使能（EC 拉高）</li>
 <li><strong>VIN</strong> —— 输入（20V 公共点）</li>
-<li><strong>UGATE / LGATE / PHASE</strong> —— Buck 驱动</li>
-<li><strong>FB / COMP</strong> —— 反馈 + 补偿</li>
+<li><strong>PGOOD / VROK</strong> —— 电源好输出，级联给下一级</li>
+<li><strong>UGATE / LGATE / PHASE</strong> —— 上下管栅极驱动 + 开关节点</li>
+<li><strong>BOOT / BTST</strong> —— 自举电容电源（浮动为上管驱动供电）</li>
+<li><strong>FB / COMP</strong> —— 反馈 + 环路补偿</li>
+<li><strong>VDDP</strong> —— 内部栅极驱动级供电</li>
+<li><strong>CS</strong> —— 电流设置（外接电阻设过流阈值）</li>
+<li><strong>REF / SS</strong> —— 内部参考 / 软启动（部分控制器外露）</li>
 </ol>
 <p>详见 <a href="../signals/">信号索引</a>。</p>
 <hr />

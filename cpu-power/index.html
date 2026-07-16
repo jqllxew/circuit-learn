@@ -915,11 +915,15 @@
 <hr />
 <h2 id="_2">主要信号（按常见程度）<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>VR_ON</strong> —— VRM 使能</li>
-<li><strong>SVC / SVD / ALERT#</strong> —— SVID 三线，动态调压</li>
-<li><strong>VR_PWRGD / PWROK</strong> —— VRM 电源好</li>
-<li><strong>PSID / BOOT_VID</strong> —— 平台 ID / 起始电压</li>
-<li><strong>IMON / IOUT</strong> —— 电流监测</li>
+<li><strong>VR_ON</strong> —— VRM 使能，EC 拉高触发上电</li>
+<li><strong>VR_PWRGD / PWROK</strong> —— VRM 电源好，PCH 释放 PLTRST# 的前置</li>
+<li><strong>SVC / SVD / ALERT#</strong> —— SVID 三线，CPU ↔ VRM 动态调压</li>
+<li><strong>PSID / BOOT_VID</strong> —— 平台 ID / 起始电压，上电前读取选参数表</li>
+<li><strong>IMON / IOUT</strong> —— 输出电流监测（模拟电压 ∝ I）</li>
+<li><strong>PROCHOT#</strong> —— CPU 强制降频请求（VRM / 充电 IC / EC 可触发）</li>
+<li><strong>PGOOD (各路)</strong> —— VCCSA / VCCIO / VCCGT 各支路电源好</li>
+<li><strong>UGATE / LGATE / PHASE / BOOT</strong> —— 多相 Buck 上下管驱动 + 开关节点 + 自举</li>
+<li><strong>FB / COMP</strong> —— 反馈 + 环路补偿（每相独立）</li>
 </ol>
 <p>详见 <a href="../signals/">信号索引</a>。</p>
 <hr />

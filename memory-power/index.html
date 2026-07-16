@@ -907,9 +907,12 @@
 <ol>
 <li><strong>VDDQ_EN</strong> —— 主供电使能（S3 必须保持）</li>
 <li><strong>VTT_EN</strong> —— 终结电压使能（S3 时关断）</li>
-<li><strong>VTTREF</strong> —— 参考电压输出</li>
+<li><strong>VTTREF</strong> —— 参考电压输出（≈ VDDQ/2）</li>
 <li><strong>PGOOD</strong> —— 电源好</li>
-<li><strong>UGATE / LGATE / PHASE</strong> —— VDDQ Buck 驱动</li>
+<li><strong>UGATE / LGATE / PHASE / BOOT</strong> —— VDDQ Buck 上下管驱动 + 开关节点 + 自举</li>
+<li><strong>FB / COMP</strong> —— 反馈 + 补偿</li>
+<li><strong>SLP_S3# / SLP_S4#</strong> —— 睡眠状态输入，决定 VTT 关断 / VDDQ 保持策略</li>
+<li><strong>VLDOIN</strong> —— VTT LDO 输入（通常直接从 VDDQ 取）</li>
 </ol>
 <p>详见 <a href="../signals/">信号索引</a>。</p>
 <hr />

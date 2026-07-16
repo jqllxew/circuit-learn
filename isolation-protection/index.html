@@ -418,7 +418,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        主要信号（按常见程度）
+        主要信号（按功能分组）
       
     </span>
   </a>
@@ -830,7 +830,7 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        主要信号（按常见程度）
+        主要信号（按功能分组）
       
     </span>
   </a>
@@ -881,14 +881,39 @@
 <li><a href="https://www.monolithicpower.com/">MP2617</a>（MPS）</li>
 </ul>
 <hr />
-<h2 id="_3">主要信号（按常见程度）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>ACOK / ACDET</strong> —— 适配器检测</li>
-<li><strong>SDA / SCL</strong> —— SMBus 通信（EC ↔ 充电 IC）</li>
-<li><strong>PROCHOT#</strong> —— 过流保护，触发 CPU 降频</li>
-<li><strong>SRP / SRN</strong> —— 充电电流检测（差分）</li>
-<li><strong>HIDRV / LODRV / PHASE</strong> —— Buck 同步驱动</li>
-</ol>
+<h2 id="_3">主要信号（按功能分组）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><strong>适配器 / 电池检测</strong></p>
+<ul>
+<li><strong>ACOK</strong> —— 适配器有效指示</li>
+<li><strong>ACDET</strong> —— 适配器检测电压输入（分压阈值 &gt; 2.4V 有效）</li>
+<li><strong>BATPRES</strong> —— 电池存在指示</li>
+<li><strong>TB_STAT</strong> —— Turbo Boost / 混合升压 状态</li>
+</ul>
+<p><strong>SMBus 通信</strong></p>
+<ul>
+<li><strong>SDA / SCL</strong> —— EC ↔ 充电 IC 命令/状态</li>
+<li><strong>ALERT# / SMBus Alert</strong> —— 从设备主动通知 EC 故障</li>
+<li><strong>CHRG_INHIBIT</strong> —— 充电禁止（SMBus 寄存器位 REG0x12[0]）</li>
+</ul>
+<p><strong>电流 / 功率检测</strong></p>
+<ul>
+<li><strong>SRP / SRN</strong> —— 充电电流检测（跨检测电阻差分）</li>
+<li><strong>ACP / ACN</strong> —— 适配器电流检测（差分）</li>
+<li><strong>IADP</strong> —— 适配器电流缓冲输出（20x / 40x ACP-ACN）</li>
+<li><strong>IDCHG</strong> —— 电池放电电流缓冲输出（8x / 16x SRN-SRP）</li>
+<li><strong>PMON</strong> —— 系统总功率监测输出</li>
+</ul>
+<p><strong>保护动作</strong></p>
+<ul>
+<li><strong>PROCHOT#</strong> —— CPU 强制降频请求（充电 IC 检测到过流可触发）</li>
+</ul>
+<p><strong>同步 Buck 主级</strong></p>
+<ul>
+<li><strong>HIDRV / LODRV / PHASE / BOOT</strong> —— 上下管驱动 + 开关节点 + 自举</li>
+<li><strong>REGN</strong> —— 内部 6V LDO 输出（栅极驱动用）</li>
+<li><strong>ACDRV</strong> —— ACFET 电荷泵驱动（CMSRC + 6V）</li>
+<li><strong>BATDRV</strong> —— BATFET 电荷泵驱动（BATSRC + 6V）</li>
+</ul>
 <p>详见 <a href="../signals/">信号索引</a>。</p>
 <hr />
 <h2 id="_4">工作时序<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
