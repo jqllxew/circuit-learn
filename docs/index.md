@@ -1,21 +1,16 @@
 # 电路学习笔记
 
-主板电路分析与芯片手册整理。
+主板电路分析笔记。核心是**信号 ↔ 电路 ↔ IC 双向索引**：
 
-## 内容导航
+- 遇到信号名 → [信号索引](signals.md) 查释义和典型 IC
+- 想修某个电路 → 对应电路页看主要信号和经典型号外链
+- 芯片作为标签存在（型号 + 数据手册外链），不做详细介绍
 
-| 章节 | 说明 |
-|------|------|
-| [RTC 相关信号](rtc-signals.md) | RTCRST、SRTCRST、RTC_X1/X2、RTCVCC_3P3 信号定义与供电架构 |
-| [20V 供电公共点](20v-power-rail.md) | 主板 Buck 电路公共供电轨分析与 Layout 要点 |
-| **隔离保护电路** | |
-| ├─ [BQ24780S 充电控制器](bq24780s.md) | TI 同步降压充电控制器数据手册精要 |
-| ├─ [BQ24727 充电控制器](bq24727.md) | TI 精简版同步降压充电控制器数据手册精要 |
-| └─ [ISL88731A 充电控制器](isl88731a.md) | Renesas 经典同步降压充电控制器数据手册精要 |
-| **PWM 供电电路** | |
-| ├─ [TPS51125 系统供电控制器](tps51125.md) | TI 笔记本 5V/3.3V 系统主供电控制器精要 |
-| ├─ [TPS51123 系统供电控制器](tps51123.md) | TI 经典 5V/3.3V 系统供电控制器（TPS51125 前身） |
-| └─ [Buck 电路实例](buck-examples.md) | RT8209 通用 Buck + RT8231 DDR 供电 教学电路图分析 |
-| **待机与开机时序** | |
-| ├─ [EC 待机架构](ec-standby.md) | 嵌入式控制器待机电路与开机流程分析 |
-| └─ [上电时序与开机流程](power-on-sequence.md) | 主板完整上电顺序、PCH 待机条件与故障概率 |
+## 导航
+
+- **[信号索引](signals.md)** ⭐ —— 所有信号一览，按类别分组，可 Ctrl+F 检索
+- **信号与供电基础** —— [RTC 相关信号](rtc-signals.md)、[20V 供电公共点](20v-power-rail.md)
+- **[隔离保护电路](isolation-protection.md)** —— 电池/适配器切换 + 充电控制
+- **PWM 供电电路** —— [3/5V 系统供电](system-power.md)、[CPU 平台供电](cpu-power.md)、[内存供电](memory-power.md)、[Buck 电路实例](buck-examples.md)
+- **待机与开机时序** —— [待机供电轨](standby-power-rails.md)、[EC 待机架构](ec-standby.md)、[上电时序](power-on-sequence.md)
+- **[名词扫盲](embedded-glossary.md)** —— 嵌入式术语按修板/协议/生产/工具场景分类
