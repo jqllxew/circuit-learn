@@ -1335,7 +1335,7 @@
 </tr>
 <tr>
 <td><strong>REGN</strong></td>
-<td>内部 6V LDO 输出（栅极驱动用）</td>
+<td>内部 6V LDO 输出，从 VCC 稳压得到；同时喂 HIDRV/LODRV 驱动级 + ACDRV/BATDRV 电荷泵；<strong>REGN 未起 = 充电 IC 全死</strong>（外接 1µF 陶瓷电容到 PGND）</td>
 <td><a href="../isolation-protection/">隔离保护</a></td>
 <td>BQ24780S, ISL88731A</td>
 </tr>

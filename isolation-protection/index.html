@@ -436,6 +436,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#regn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REGN 深入
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -848,6 +859,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#regn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        REGN 深入
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -910,7 +932,7 @@
 <p><strong>同步 Buck 主级</strong></p>
 <ul>
 <li><strong>HIDRV / LODRV / PHASE / BOOT</strong> —— 上下管驱动 + 开关节点 + 自举</li>
-<li><strong>REGN</strong> —— 内部 6V LDO 输出（栅极驱动用）</li>
+<li><strong>REGN</strong> —— 内部 6V LDO 输出，栅极驱动 + 电荷泵电源（详见下方"REGN 深入"）</li>
 <li><strong>ACDRV</strong> —— ACFET 电荷泵驱动（CMSRC + 6V）</li>
 <li><strong>BATDRV</strong> —— BATFET 电荷泵驱动（BATSRC + 6V）</li>
 </ul>
@@ -928,6 +950,44 @@
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   恒流 (CC) → 电池电压达标 → 恒压 (CV) → 充电完成
 </code></pre></div>
 <p><strong>保护动作：</strong> 输入过压 / 输入过流 / 电池过压 / 充电过流 / 热关断 → ACFET/RBFET 关断或 PWM 停止</p>
+<hr />
+<h2 id="regn">REGN 深入<a class="headerlink" href="#regn" title="Permanent link">&para;</a></h2>
+<p>充电 IC 内部从 VCC (适配器 20V) 稳压出 <strong>~6V</strong> 的栅极驱动专用 LDO 输出。</p>
+<p><strong>为什么是 6V：</strong> 5V 不够完全打开 N-MOS（Rds(on) 特性未饱和，损耗大）；12V 会超过栅极长期安全裕量（Vgs_max ±20V 需留裕量）。6V 是"完全增强 + 安全裕量"的甜点。</p>
+<p><strong>下游负载（两路）：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>VCC (~20V) ──内部 LDO──▶ REGN (~6V) ──┬─▶ HIDRV / LODRV 驱动级 (Buck 上下管栅极摆幅)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                                       └─▶ ACDRV / BATDRV 电荷泵电源
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                                             （将 CMSRC/BATSRC 源极浮起 +6V，打通 N-MOS 隔离开关）
+</code></pre></div>
+<p><strong>外围电路：</strong> REGN 脚对 PGND 接 <strong>1µF 陶瓷电容</strong>（滤波 + 瞬态电荷池，上管开通瞬间灌电流）。</p>
+<p><strong>故障对照表：</strong></p>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>可能原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REGN = 0V</td>
+<td>LDO 挂了 / 外接电容对地短 / IC 内部损坏</td>
+</tr>
+<tr>
+<td>REGN = 6V 但没 PWM</td>
+<td>REGN 本身 OK，问题在别处（ACOK / SDA / EN 或 SMBus 未配置）</td>
+</tr>
+<tr>
+<td>REGN 振荡</td>
+<td>外接电容缺失或容量太小</td>
+</tr>
+<tr>
+<td>REGN ≈ 3V 拉不上去</td>
+<td>后级重载或部分短路（栅极对地漏电 / 驱动损坏）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>排查口诀：</strong> 适配器插好 → ACOK 先高 → REGN 才起 6V。<strong>REGN 没起，充电 / boost / Buck 全废，一颗都跑不起来。</strong></p>
 
 
 
